@@ -25,9 +25,21 @@ class ViewController: UIViewController {
         
         self.view.addSubview(tempLabel)
         
+        let tempBtn = UIButton.init(type: UIButton.ButtonType.custom)
+        tempBtn.frame = CGRect.init(x: 100, y: 400, width: 200, height: 200)
+        tempBtn.backgroundColor = UIColor.blue
+        tempBtn.setTitle("点一下试试", for: UIControl.State.normal)
+        tempBtn.titleLabel?.textAlignment = NSTextAlignment.center
+        tempBtn.setTitleColor(UIColor.red, for: UIControl.State.normal)
+        tempBtn.addTarget(self, action: #selector(btnDidClick), for: UIControl.Event.touchUpInside)
+        
+        self.view.addSubview(tempBtn)
         // Do any additional setup after loading the view.
     }
 
-
+    
+    @objc func btnDidClick() {
+        print("试试就试试")
+    }
 }
 
