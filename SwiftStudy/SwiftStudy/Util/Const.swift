@@ -22,7 +22,5 @@ let IS_IPHONE_X =  (UIScreen.instancesRespond(to: #selector(getter: UIScreen.mai
 
 
 class Const: NSObject {
-
-//    #define kSysStatusBarHeight        MIN([UIApplication sharedApplication].statusBarFrame.size.width, [UIApplication sharedApplication].statusBarFrame.size.height)        // 系统状态栏高度
-    
+ 
 }

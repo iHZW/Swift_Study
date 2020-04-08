@@ -58,7 +58,7 @@ class ViewController: BaseViewController {
     
     @objc func nextActon () {
         
-        self.navigationController?.pushViewController(SecondViewController(), animated: true)
+        self.navigationController?.pushViewController(ViewDetailPage(), animated: true)
     }
 
 

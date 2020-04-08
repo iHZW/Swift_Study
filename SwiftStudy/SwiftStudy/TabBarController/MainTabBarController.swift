@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController {
         vcItem.tag = index
         childVC.tabBarItem = vcItem
         
-        let navigationVC = UINavigationController.init(rootViewController: childVC)
+        let navigationVC = BaseNavigationController.init(rootViewController: childVC)
         addChild(navigationVC)
     }
     
