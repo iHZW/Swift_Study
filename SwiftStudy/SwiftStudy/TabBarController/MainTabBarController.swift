@@ -23,20 +23,19 @@ class MainTabBarController: UITabBarController {
         addTabBarChildViewControl(childVC: FourthViewController(), title: titleArray.object(at: 3) as! NSString, imageName: "TabMenu_Trade_Normal", selectImageName: "TabMenu_Trade_Highlight", index: 3)
         
         addTabBarChildViewControl(childVC: FifthViewController(), title: titleArray.object(at: 4) as! NSString, imageName: "TabMenu_Home_Normal", selectImageName: "TabMenu_Mine_Highlight", index: 4)
-        
+        //处理选中tabBar的字体颜色
         self.tabBar.tintColor = UIColor.red
     }
     
     //添加tabBarVC控制器
     private func addTabBarChildViewControl (childVC : UIViewController, title : NSString, imageName : NSString, selectImageName : NSString, index : Int) {
 
-//        let tempSelectImage = UIImage.init(named: selectImageName as String)
-//        tempSelectImage?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        //确保使用原图
         let tempSelectImage = UIImage(named:selectImageName as String)?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         let vcItem = UITabBarItem.init(title: title as String, image: UIImage.init(named: (imageName as String)), selectedImage: tempSelectImage)
         vcItem.tag = index
         childVC.tabBarItem = vcItem
-        
+        //BaseNavigationController 继承于 UINavigationController 的子类 主要处理push二级页面hidesBottomBarWhenPushed的显示问题
         let navigationVC = BaseNavigationController.init(rootViewController: childVC)
         addChild(navigationVC)
     }
@@ -46,16 +45,5 @@ class MainTabBarController: UITabBarController {
         
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
