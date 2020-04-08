@@ -11,7 +11,7 @@ import UIKit
 let thirdCellId = "thirdCellId"
 let cellHeight = 60
 
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -52,9 +52,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
     open var tableView : UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = self.navigationController?.tabBarItem.title
-        self.view.backgroundColor = UIColor.yellow
         
         self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64, width: kMainScreenWidth, height: kMainSCreenHeight - 64), style: UITableView.Style.plain)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: thirdCellId)

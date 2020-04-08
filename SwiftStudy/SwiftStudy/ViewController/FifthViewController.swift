@@ -8,13 +8,11 @@
 
 import UIKit
 
-class FifthViewController: UIViewController {
+class FifthViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = self.navigationController?.tabBarItem.title
-        self.view.backgroundColor = UIColor.purple
         // Do any additional setup after loading the view.
     }
     

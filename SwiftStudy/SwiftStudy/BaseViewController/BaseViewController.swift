@@ -1,18 +1,20 @@
 //
-//  FourthViewController.swift
-//  Swift_Study
+//  BaseViewController.swift
+//  SwiftStudy
 //
-//  Created by 韩志伟 on 2020/4/8.
-//  Copyright © 2020 韩志伟. All rights reserved.
+//  Created by HZW on 2020/4/8.
+//  Copyright © 2020 HZW. All rights reserved.
 //
 
 import UIKit
 
-class FourthViewController: BaseViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = self.navigationController?.tabBarItem.title
+        self.view.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
     }
     

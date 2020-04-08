@@ -10,14 +10,11 @@ let cellId = "SecondCellId"
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SecondViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
-    open var tableView : UITableView!;
+    open var tableView : UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = UIColor.white
-        self.title = self.navigationController?.tabBarItem.title
 
         self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64, width: (kMainScreenWidth), height: kMainSCreenHeight - 64), style: UITableView.Style.plain)
         self.tableView.dataSource = self

@@ -8,16 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: BaseViewController {
     
     open var myLabel: UILabel!
     open var dataArray : NSMutableArray?
     open var currentIndx = 0
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        
-        self.title = self.navigationController?.tabBarItem.title
+        super.viewDidLoad()        
         
         let tempLabel = UILabel.init(frame: CGRect.init(x: 100, y: 100, width: 200, height: 200))
         tempLabel.text = "我是Label"
