@@ -1,16 +1,20 @@
 PODS:
+  - HandyJSON (5.0.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - HandyJSON
   - SnapKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - HandyJSON
     - SnapKit
 
 SPEC CHECKSUMS:
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 57ade25cb02b2450d0d40ab60c444af0b19b16bd
+PODFILE CHECKSUM: 07c44d531ef7d312e24a2f4b31d1703cb9cb8db7
 
 COCOAPODS: 1.9.1

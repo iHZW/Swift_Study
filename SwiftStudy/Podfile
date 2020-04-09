@@ -8,5 +8,7 @@ target 'SwiftStudy' do
 
   #约束框架(和OC 的 Masonry相似)
   pod 'SnapKit'
+  #JSON转Model(HandyJSON另辟蹊径，采用Swift反射+内存赋值的方式来构造Model实例，保持原汁原味的Swift类定义)
+  pod 'HandyJSON'
 
 end
