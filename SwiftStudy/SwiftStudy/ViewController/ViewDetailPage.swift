@@ -15,13 +15,14 @@ class ViewDetailPage: BaseViewController {
 
         self.title = "首页详情页"
         
-        let nextBtn = createBtn(rect: CGRect.init(x: 20, y: 100, width: kMainScreenWidth - 20*2, height: 200), title: "跳转到第三页根控制器", titleColor: UIColor.blue, selector: #selector(nextAction))
-       
-        let popBtn = createBtn(rect: CGRect.init(x: 20, y: 400, width: kMainScreenWidth - 20*2, height: 200), title: "返回", titleColor: UIColor.blue, selector: #selector(popAction))
+        let nextBtn = createBtn(rect: CGRect.init(x: 20, y: 100, width: kMainScreenWidth - 20*2, height: 100), title: "跳转到第三页根控制器", titleColor: UIColor.blue, selector: #selector(nextAction))
+            
+        let tempBtn = WFCreateButton(target: self, rect: CGRect.init(x: 20, y: 250, width: kMainScreenWidth - 20*2, height: 100), title: "工厂方式创建的Button", titleColor: UIColor.red, selector: #selector(wfAction), event: UIControl.Event.touchUpInside)
+        let popBtn = createBtn(rect: CGRect.init(x: 20, y: 400, width: kMainScreenWidth - 20*2, height: 100), title: "返回", titleColor: UIColor.blue, selector: #selector(popAction))
 
         self.view.addSubview(nextBtn)
         self.view.addSubview(popBtn)
-//        let
+        self.view.addSubview(tempBtn)
         
     }
     
@@ -50,7 +51,11 @@ class ViewDetailPage: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-
+    @objc func wfAction(button: UIButton) {
+        print("点击了: \(String(describing: button.titleLabel?.text))")
+    }
+    
+    
     /*
     // MARK: - Navigation
 

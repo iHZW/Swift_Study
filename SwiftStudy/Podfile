@@ -6,7 +6,7 @@ target 'SwiftStudy' do
 
   use_frameworks!
 
-
-#  pod 'JSONModel'
+  #约束框架(和OC 的 Masonry相似)
+  pod 'SnapKit'
 
 end

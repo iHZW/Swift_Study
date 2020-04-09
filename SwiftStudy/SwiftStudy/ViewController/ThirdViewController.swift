@@ -9,24 +9,49 @@
 import UIKit
 
 let thirdCellId = "thirdCellId"
-let cellHeight = 60
+let cellHeight = 80
+let headerHeight = 45
 
 class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //懒加载数据源
+    lazy var dataArray : NSMutableArray = {
+        var tempArray = NSMutableArray.init()
+        var sectinoOneArray = NSMutableArray.init()
+        var sectionTwoArray = NSMutableArray.init()
+        
+        for index in 1...10 {
+            let rightName = ((index % 2 == 0) ? "试试看" : "看好了")
+            let leftIamgeName = ((index % 2 == 0) ? "headerImage0ne" : "headerImageTwo")
+            let infoModel = WFListInfoModel.init(titleName: "第一组_\(index)排", subTitleName: "详情第\(index)", leftImageName: leftIamgeName, rightBtnName: rightName)
+            sectinoOneArray.add(infoModel)
+        }
+        
+        for index in 1...20 {
+            let rightName = ((index % 2 == 0) ? "赶紧滚" : "OK")
+            let leftIamgeName = ((index % 2 == 0) ? "headerImageTwo" : "headerImage0ne")
+            let infoModel = WFListInfoModel.init(titleName: "第二组_\(index)排", subTitleName: "详情第\(index)", leftImageName: leftIamgeName, rightBtnName: rightName)
+            sectionTwoArray.add(infoModel)
+        }
+        tempArray.addObjects(from: [sectinoOneArray, sectionTwoArray])
+        return tempArray
+    }()
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = 20
-        if section == 0 {
-            count = 10
-        }
+        let sectionArray = self.dataArray.object(at: section) as! NSMutableArray
+        let count = sectionArray.count
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: thirdCellId, for: indexPath)
-        cell.textLabel?.text = "第三页第\(indexPath.row)名"
+        let cell = tableView.dequeueReusableCell(withIdentifier: thirdCellId, for: indexPath) as! WFCommonCell
+        let sectionArray = self.dataArray.object(at: indexPath.section) as! NSMutableArray
+        let infoModel = sectionArray.object(at: indexPath.row) as! WFListInfoModel
+        cell.cellInfoModel(infoModel: infoModel)
+
         return cell
     }
     
@@ -36,16 +61,16 @@ class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerName = "我是Header :\(section)"
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: cellHeight))
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: headerHeight))
         headerView.backgroundColor = UIColor.gray
-        let headerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: cellHeight))
+        let headerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: headerHeight))
         headerLabel.text = headerName
         headerView.addSubview(headerLabel)
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return CGFloat(headerHeight)
     }
     
 
@@ -54,27 +79,13 @@ class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64, width: kMainScreenWidth, height: kMainSCreenHeight - 64), style: UITableView.Style.plain)
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: thirdCellId)
+        self.tableView.register(WFCommonCell.classForCoder(), forCellReuseIdentifier: thirdCellId)
         self.tableView?.dataSource = self
         self.tableView?.delegate = self
         self.tableView.rowHeight = CGFloat(cellHeight)
         
         self.view.addSubview(self.tableView)
         
-        // Do any additional setup after loading the view.
     }
-        
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

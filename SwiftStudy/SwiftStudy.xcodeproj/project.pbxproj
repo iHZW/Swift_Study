@@ -24,6 +24,9 @@
 		7C81CE8F243E1B4600C1A60E /* ViewDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE8E243E1B4600C1A60E /* ViewDetailPage.swift */; };
 		7C81CE94243E1D8800C1A60E /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE93243E1D8800C1A60E /* BaseNavigationController.swift */; };
 		7C81CE97243E1DB200C1A60E /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE96243E1DB200C1A60E /* Const.swift */; };
+		7C81CE9A243F418200C1A60E /* WFListInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE99243F418200C1A60E /* WFListInfoModel.swift */; };
+		7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE9B243F419700C1A60E /* UIVIewCreate.swift */; };
+		7C81CE9E243F41BA00C1A60E /* WFCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CE9D243F41BA00C1A60E /* WFCommonCell.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		7C81CE8E243E1B4600C1A60E /* ViewDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDetailPage.swift; sourceTree = "<group>"; };
 		7C81CE93243E1D8800C1A60E /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		7C81CE96243E1DB200C1A60E /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		7C81CE99243F418200C1A60E /* WFListInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFListInfoModel.swift; sourceTree = "<group>"; };
+		7C81CE9B243F419700C1A60E /* UIVIewCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVIewCreate.swift; sourceTree = "<group>"; };
+		7C81CE9D243F41BA00C1A60E /* WFCommonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WFCommonCell.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +147,7 @@
 		7C650CD5243CD62F00726BA4 /* SwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
+				7C81CE98243F418200C1A60E /* Model */,
 				7C81CE95243E1DB200C1A60E /* Util */,
 				7C81CE92243E1D8800C1A60E /* BaseNavigationController */,
 				7C81CE8B243E177600C1A60E /* BaseViewController */,
@@ -187,6 +194,7 @@
 			children = (
 				7C81CE7E243E150400C1A60E /* ViewController.swift */,
 				7C81CE8E243E1B4600C1A60E /* ViewDetailPage.swift */,
+				7C81CE9D243F41BA00C1A60E /* WFCommonCell.swift */,
 				7C81CE7F243E150400C1A60E /* ThirdViewController.swift */,
 				7C81CE80243E150400C1A60E /* FifthViewController.swift */,
 				7C81CE81243E150400C1A60E /* FourthViewController.swift */,
@@ -215,8 +223,17 @@
 			isa = PBXGroup;
 			children = (
 				7C81CE96243E1DB200C1A60E /* Const.swift */,
+				7C81CE9B243F419700C1A60E /* UIVIewCreate.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		7C81CE98243F418200C1A60E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7C81CE99243F418200C1A60E /* WFListInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +247,7 @@
 				7C650CCF243CD62F00726BA4 /* Sources */,
 				7C650CD0243CD62F00726BA4 /* Frameworks */,
 				7C650CD1243CD62F00726BA4 /* Resources */,
+				A3C12543914C64D3E1CB1303 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,6 +365,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		A3C12543914C64D3E1CB1303 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F72C5EAFE720BB9E32F84246 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,10 +418,13 @@
 				7C81CE88243E150400C1A60E /* FourthViewController.swift in Sources */,
 				7C81CE97243E1DB200C1A60E /* Const.swift in Sources */,
 				7C81CE8D243E178900C1A60E /* BaseViewController.swift in Sources */,
+				7C81CE9E243F41BA00C1A60E /* WFCommonCell.swift in Sources */,
 				7C81CE8F243E1B4600C1A60E /* ViewDetailPage.swift in Sources */,
+				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,
 				7C81CE85243E150400C1A60E /* ViewController.swift in Sources */,
 				7C650CD7243CD62F00726BA4 /* AppDelegate.swift in Sources */,
 				7C81CE86243E150400C1A60E /* ThirdViewController.swift in Sources */,
+				7C81CE9A243F418200C1A60E /* WFListInfoModel.swift in Sources */,
 				7C650CD9243CD62F00726BA4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,6 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SwiftStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,6 +620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SwiftStudy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
