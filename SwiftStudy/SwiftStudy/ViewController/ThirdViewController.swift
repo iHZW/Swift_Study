@@ -62,7 +62,7 @@ class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerName = "我是Header :\(section)"
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: headerHeight))
-        headerView.backgroundColor = UIColor.gray
+        headerView.backgroundColor = UIColor.lightGray
         let headerLabel = UILabel.init(frame: CGRect.init(x: 0, y: 0, width: Int(kMainScreenWidth), height: headerHeight))
         headerLabel.text = headerName
         headerView.addSubview(headerLabel)

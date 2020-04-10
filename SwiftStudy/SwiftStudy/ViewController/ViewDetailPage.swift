@@ -10,6 +10,8 @@ import UIKit
 
 class ViewDetailPage: BaseViewController {
 
+    open var transName: String!
+    private var transLabel: UILabel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,10 +26,27 @@ class ViewDetailPage: BaseViewController {
         self.view.addSubview(popBtn)
         self.view.addSubview(tempBtn)
         
+        self.transLabel = WFCreateLabel(rect: CGRect.zero, title: self.transName ?? "Hello Word", titleColor: UIColor.blue, alignment: .center, font: .systemFont(ofSize: 20))
+        self.view.addSubview(self.transLabel!)
+        
+        self.transLabel?.snp.makeConstraints({ (make) in
+            make.left.equalToSuperview().offset(15)
+            make.centerX.equalToSuperview()
+            make.size.equalTo(CGSize.init(width: 100, height: 100))
+            make.bottom.equalToSuperview().offset(-150)
+        })
+        
     }
-    
+    //测试数组排序
+    let names = ["A", "BB", "AC", "ABC", "B", "C", "AA"]
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.navigationController?.popViewController(animated: true)
+        //测试数组排序
+        let reversed = names.sorted(by: backwards(s1:s2:))
+        print("names = \(names) \n reversed = \(reversed)")
+    }
+    //降序排列
+    func backwards (s1: String, s2: String) -> Bool{
+        return s1 > s2 ? true : false
     }
 
     

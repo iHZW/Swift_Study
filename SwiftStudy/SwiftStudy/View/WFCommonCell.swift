@@ -19,12 +19,14 @@ class WFCommonCell: UITableViewCell {
     private var titleLabel : UILabel?
     private var subTitleLabel : UILabel?
     private var rightButton : UIButton?
-    
+    private var cellInfoModel : WFListInfoModel?
+
     open func leftImageName (imageName: String) {
         self.leftImageView?.image = UIImage.init(named: imageName)
     }
     
     open func cellInfoModel(infoModel: WFListInfoModel) {
+        self.cellInfoModel = infoModel
         self.leftImageView?.image = UIImage.init(named: infoModel.leftImageName)
         self.titleLabel?.text = infoModel.titleName
         self.subTitleLabel?.text = infoModel.subTitleName
@@ -159,7 +161,15 @@ class WFCommonCell: UITableViewCell {
         
         let clickResultName = self.appendName(name!)
         print("result = \(clickResultName)")
+        
+        //更改数据源
+          let titleName = self.cellInfoModel?.titleName
+        //判断现有数据是否包含拼接的字符串
+        if titleName?.contanins(find: name!) == false {
+            self.cellInfoModel?.titleName = "\(titleName!)_\(name!)"
+            let resultName = self.cellInfoModel?.titleName
+            self.titleLabel?.text = resultName!
+        }
     }
-       
 
 }

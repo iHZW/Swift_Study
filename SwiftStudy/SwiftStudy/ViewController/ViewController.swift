@@ -8,59 +8,71 @@
 
 import UIKit
 
-class ViewController: BaseViewController {
-    
-    open var myLabel: UILabel!
-    open var dataArray : NSMutableArray?
-    open var currentIndx = 0
-    override func viewDidLoad() {
-        super.viewDidLoad()        
-        
-        let tempLabel = UILabel.init(frame: CGRect.init(x: 100, y: 100, width: 200, height: 200))
-        tempLabel.text = "我是Label"
-        tempLabel.backgroundColor = UIColor.gray
-        tempLabel.textColor = UIColor.red
-        tempLabel.font = UIFont.systemFont(ofSize: 50)
-        tempLabel.textAlignment = NSTextAlignment.center;
-        tempLabel.adjustsFontSizeToFitWidth = true
-        self.myLabel = tempLabel;
-        self.view.addSubview(self.myLabel)
-        
-        let nextBtn = UIButton.init(frame: CGRect.init(x: 100, y: 300, width: 200, height: 100))
-        nextBtn.setTitle("下一页", for: UIControl.State.normal)
-        nextBtn.setTitleColor(UIColor.blue, for: UIControl.State.normal)
-        nextBtn.addTarget(self, action: #selector(nextActon), for: UIControl.Event.touchUpInside)
-        self.view.addSubview(nextBtn)
-        
-        let tempBtn = UIButton.init(frame: CGRect.init(x: 100, y: 400, width: 200, height: 200))
-        tempBtn.backgroundColor = UIColor.green
-        tempBtn.setTitle("我是Btn", for: UIButton.State.normal)
-        tempBtn.setTitleColor(UIColor.black, for: UIButton.State.normal)
-        tempBtn.titleLabel?.textAlignment = NSTextAlignment.center
-        tempBtn.addTarget(self, action: #selector(btnAction), for: UIControl.Event.touchUpInside)
-        self.view.addSubview(tempBtn)
-        
-        dataArray = NSMutableArray.init(objects: "小明", "小红", "小兰", "小白", "小黑")
-        // Do any additional setup after loading the view.
-    }
-    
-    @objc func btnAction () {
-        self.currentIndx += 1
-        var remindString = "我被袭击了"
-        if self.currentIndx >= self.dataArray!.count {
-            self.currentIndx = 0
-        }else{
-            remindString = self.dataArray?.object(at: self.currentIndx) as! String
-        }
-        self.myLabel.text = remindString
-    }
-    
-    
-    @objc func nextActon () {
-        
-        self.navigationController?.pushViewController(ViewDetailPage(), animated: true)
-    }
+private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 
+class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+
+    
+    open var dataArray : NSMutableArray?
+    //网格视图
+    var mainCollectionView : UICollectionView?
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+        self.createUI()
+    }
+    
+    func createUI() {
+
+        let collectionLayout = UICollectionViewFlowLayout.init()
+        collectionLayout.itemSize = CGSize.init(width: 100, height: 100)
+        
+        collectionLayout.minimumLineSpacing = 3
+        collectionLayout.minimumInteritemSpacing = 5
+        collectionLayout.scrollDirection = .vertical
+        collectionLayout.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)
+
+        self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 64, width: kMainScreenWidth, height: kMainSCreenHeight - 64), collectionViewLayout: collectionLayout)
+        self.mainCollectionView?.backgroundColor = UIColor.gray
+        self.mainCollectionView?.delegate = self
+        self.mainCollectionView?.dataSource = self
+        self.mainCollectionView?.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: kMyCollectionViewCellKey)
+        
+        self.view.addSubview(self.mainCollectionView!)
+    }
+    
+    
+    @objc func nextActon (index: NSInteger, name: String) {
+        let viewCtrl = ViewDetailPage.init()
+        viewCtrl.transName = name
+        self.navigationController?.pushViewController(viewCtrl, animated: true)
+    }
+    
+    
+    //collection dataSource/delegate
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kMyCollectionViewCellKey, for: indexPath) as! HomeCollectionViewCell
+        cell.currentIndex = indexPath.row
+        cell.titleName = "我是老\(indexPath.row)"
+        cell.setTitleName(name: "我是老\(indexPath.row)")
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
+        let name = cell.titleName ?? "没有传参"
+        self.nextActon(index: indexPath.row, name: name)
+    }
 
 }
 
