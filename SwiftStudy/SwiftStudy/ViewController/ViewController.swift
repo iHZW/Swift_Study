@@ -23,19 +23,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.view.backgroundColor = UIColor.white
         self.createUI()
     }
-    
+
     func createUI() {
 
         let collectionLayout = UICollectionViewFlowLayout.init()
-        collectionLayout.itemSize = CGSize.init(width: 100, height: 100)
-        
-        collectionLayout.minimumLineSpacing = 3
+        collectionLayout.itemSize = CGSize.init(width: kMainScreenWidth/2 - kLeftSpace, height: 200)
+        //设置cell上下之间的最小间距(纵向滚动,横向相反)
+        collectionLayout.minimumLineSpacing = 10
+        //设置cell左右之间的间距(纵向滚动,横向相反)
         collectionLayout.minimumInteritemSpacing = 5
+        //设置滚动方向
         collectionLayout.scrollDirection = .vertical
-        collectionLayout.sectionInset = UIEdgeInsets.init(top: 5, left: 5, bottom: 5, right: 5)
+        //设置整个collectionView的边界约束
+        collectionLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
 
         self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 64, width: kMainScreenWidth, height: kMainSCreenHeight - 64), collectionViewLayout: collectionLayout)
-        self.mainCollectionView?.backgroundColor = UIColor.gray
+        self.mainCollectionView?.backgroundColor = UIColor.white
         self.mainCollectionView?.delegate = self
         self.mainCollectionView?.dataSource = self
         self.mainCollectionView?.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: kMyCollectionViewCellKey)
@@ -63,8 +66,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kMyCollectionViewCellKey, for: indexPath) as! HomeCollectionViewCell
         cell.currentIndex = indexPath.row
+        if indexPath.row%3 == 0 {
+            cell.imageName = "default_image"
+        }else if indexPath.row%3 == 1 {
+            cell.imageName = "default_image_one"
+        }else{
+            cell.imageName = "default_image_two"
+        }
         cell.titleName = "我是老\(indexPath.row)"
-        cell.setTitleName(name: "我是老\(indexPath.row)")
         return cell
     }
     

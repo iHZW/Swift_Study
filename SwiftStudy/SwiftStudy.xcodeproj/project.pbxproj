@@ -29,6 +29,7 @@
 		7C81CEA32440979800C1A60E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CEA12440979800C1A60E /* HomeCollectionViewCell.swift */; };
 		7C81CEA5244097C700C1A60E /* CheckString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CEA4244097C700C1A60E /* CheckString.swift */; };
 		7C81CEA72440987800C1A60E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CEA62440987800C1A60E /* ViewController.swift */; };
+		7C81CEA92440B44900C1A60E /* UIColorCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C81CEA82440B44900C1A60E /* UIColorCreate.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		7C81CEA12440979800C1A60E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7C81CEA4244097C700C1A60E /* CheckString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckString.swift; sourceTree = "<group>"; };
 		7C81CEA62440987800C1A60E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7C81CEA82440B44900C1A60E /* UIColorCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorCreate.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +231,7 @@
 				7C81CEA4244097C700C1A60E /* CheckString.swift */,
 				7C81CE96243E1DB200C1A60E /* Const.swift */,
 				7C81CE9B243F419700C1A60E /* UIVIewCreate.swift */,
+				7C81CEA82440B44900C1A60E /* UIColorCreate.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				7C81CE89243E150400C1A60E /* SecondViewController.swift in Sources */,
 				7C81CE87243E150400C1A60E /* FifthViewController.swift in Sources */,
 				7C81CEA22440979800C1A60E /* WFCommonCell.swift in Sources */,
+				7C81CEA92440B44900C1A60E /* UIColorCreate.swift in Sources */,
 				7C81CE84243E150400C1A60E /* MainTabBarController.swift in Sources */,
 				7C81CE88243E150400C1A60E /* FourthViewController.swift in Sources */,
 				7C81CE97243E1DB200C1A60E /* Const.swift in Sources */,

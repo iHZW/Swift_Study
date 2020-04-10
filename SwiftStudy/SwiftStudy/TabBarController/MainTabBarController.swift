@@ -41,7 +41,7 @@ class MainTabBarController: UITabBarController {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("didSlectindex:\(item.tag)");
+        WFLog("didSlectindex:\(item.tag)");
         
         
     }

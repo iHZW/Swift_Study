@@ -56,7 +56,7 @@ class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)名")
+        WFLog("点击了第\(indexPath.row)名")
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -40,7 +40,7 @@ class SecondViewController: BaseViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("点击了第\(indexPath.row)")
+        WFLog("点击了第\(indexPath.row)")
     }
 
     /*

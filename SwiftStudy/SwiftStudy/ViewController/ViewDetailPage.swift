@@ -42,7 +42,7 @@ class ViewDetailPage: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //测试数组排序
         let reversed = names.sorted(by: backwards(s1:s2:))
-        print("names = \(names) \n reversed = \(reversed)")
+        WFLog("names = \(names) \n reversed = \(reversed)")
     }
     //降序排列
     func backwards (s1: String, s2: String) -> Bool{
@@ -71,7 +71,7 @@ class ViewDetailPage: BaseViewController {
     }
     
     @objc func wfAction(button: UIButton) {
-        print("点击了: \(String(describing: button.titleLabel?.text))")
+        WFLog("点击了: \(String(describing: button.titleLabel?.text))")
     }
     
     

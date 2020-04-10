@@ -145,7 +145,7 @@ class WFCommonCell: UITableViewCell {
     
     //不带返回值的闭包
     private let studname = {(title: String) -> () in
-        print("title = \(title)")
+        WFLog("title = \(title)")
     }
     
     //返回string类型的闭包
@@ -159,8 +159,8 @@ class WFCommonCell: UITableViewCell {
         let name = rightBtn.titleLabel?.text
         self.studname(name!)
         
-        let clickResultName = self.appendName(name!)
-        print("result = \(clickResultName)")
+        let clickResultName = self.appendName(name!)        
+        WFLog("WFLog_result = \(clickResultName)")
         
         //更改数据源
           let titleName = self.cellInfoModel?.titleName
