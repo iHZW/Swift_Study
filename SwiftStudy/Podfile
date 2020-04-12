@@ -10,5 +10,15 @@ target 'SwiftStudy' do
   pod 'SnapKit'
   #JSON转Model(HandyJSON另辟蹊径，采用Swift反射+内存赋值的方式来构造Model实例，保持原汁原味的Swift类定义)
   pod 'HandyJSON'
+  #网络请求框架
+  pod 'Alamofire'
+  pod 'FLAnimatedImage'
+  pod 'SDWebImage'
+  
+  # APP启动引导页,支持播放gif/png/jpg等类型的资源数组
+#  pod 'GuidePageView'
+
+   
+
 
 end

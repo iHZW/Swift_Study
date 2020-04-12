@@ -13,6 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //如果需要启动页延迟几秒进去可以简单这样写
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//        Thread.sleep(forTimeInterval: 1)
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         return true
     }
 

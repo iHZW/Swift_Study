@@ -17,6 +17,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private var contentLabel : UILabel?
     private var subLabel: UILabel?
     
+    func configModel(model: HomeCellItem) {
+        
+    }
+    
     public var titleName : String?{
         didSet{
             self.contentLabel?.text = self.titleName

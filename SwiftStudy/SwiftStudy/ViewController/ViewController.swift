@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 
@@ -78,9 +79,57 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
-        let name = cell.titleName ?? "没有传参"
-        self.nextActon(index: indexPath.row, name: name)
+        self.testRequest()
+//        self.testRequestTwo()
+//        self.testRequestThree()
+        
+//        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
+//        let name = cell.titleName ?? "没有传参"
+//        self.nextActon(index: indexPath.row, name: name)
+    }
+    
+    func testRequest() {
+        let url = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
+        WFRequestDataLoader.request(method: .get, url: url) { (result) in
+            if result.code == .success {
+                //从数组反序列化模型数组
+//                let datas = Array<HomeCellItem>.deserialize(from: result.newsList as? NSArray) ?? []
+                //可以直接写明数组中的元素类型
+                let datas = result.newsList!
+                
+            }
+        }
+        
+//        Alamofire.request(url!, method: HTTPMethod.post, parameters: parameters, encoding: URLEncoding.default, headers: nil).validate().responseJSON { (response) in
+//            if response.result.isSuccess
+//            {
+//                print("请求成功：\n\(response.result.value!)")
+//            }else
+//            {
+//                print("\(response.debugDescription)")
+//            }
+//        }
+    }
+    
+    func testRequestTwo() {
+        let urlString = "https://wanandroid.com/article/listproject/0/json"
+        let url = URL.init(string: urlString)
+        WFRequestDataLoader.request(method: .get, url: url!) { (result) in
+            
+            
+        }
+    }
+    
+    func testRequestThree() {
+        let urlString = "https://httpbin.org/post"
+        let url = URL.init(string: urlString)
+        let parameters: [String : Any] = ["foo": [1,2,3], "bar": ["baz": "qux"]]
+        WFRequestDataLoader.request(method: .post, url: url!, parameters: parameters) { (result) in
+            if result.code == .success {
+                let datas = Array<HomeListModel>.deserialize(from: result.newsList as? NSArray) ?? []
+                WFLog("datas = \(datas)")
+            }
+        }
     }
 
 }

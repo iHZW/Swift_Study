@@ -1,20 +1,24 @@
 PODS:
+  - Alamofire (4.8.2)
   - HandyJSON (5.0.0)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
+  - Alamofire
   - HandyJSON
   - SnapKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
     - HandyJSON
     - SnapKit
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 07c44d531ef7d312e24a2f4b31d1703cb9cb8db7
+PODFILE CHECKSUM: 9ce97c60acf5e7eb56a8bd190e34aa2f86592532
 
 COCOAPODS: 1.9.1
