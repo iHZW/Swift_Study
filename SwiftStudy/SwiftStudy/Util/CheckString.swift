@@ -18,6 +18,10 @@ extension String {
     func containsIgnoringCase(find: String) -> Bool {
         return self.range(of: find, options: .caseInsensitive) != nil
     }
+    //检测字符串是否为空
+    func validString() -> Bool {
+        return self.isEmpty ? true : false
+    }
 }
 
 class CheckString: NSObject {

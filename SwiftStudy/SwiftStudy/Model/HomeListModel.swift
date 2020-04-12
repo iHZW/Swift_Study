@@ -37,6 +37,7 @@ class HomeListModel: HandyJSON {
     var newsList : [HomeCellItem]?
     var userId : String?
     var nt: String?
+    var pt: String?
     var ps: String?
 //    @objc var my_date : Int = 0{
 //        willSet {

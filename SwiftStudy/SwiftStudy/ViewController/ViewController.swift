@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
+private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
 
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -17,7 +18,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     open var dataArray : NSMutableArray?
     //网格视图
     var mainCollectionView : UICollectionView?
-    
+    var request_nt: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,14 +90,20 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func testRequest() {
-        let url = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
+        var url = kRequestUrl
+        if self.request_nt.validString() == false {
+            url.append("&nt="+self.request_nt)
+        }
         WFRequestDataLoader.request(method: .get, url: url) { (result) in
             if result.code == .success {
                 //从数组反序列化模型数组
 //                let datas = Array<HomeCellItem>.deserialize(from: result.newsList as? NSArray) ?? []
                 //可以直接写明数组中的元素类型
                 let datas = result.newsList!
-                
+                if result.nt!.validString() == false {
+                    self.request_nt = result.nt!
+                }
+                WFLog("\(datas)\n\(self.request_nt)")
             }
         }
         
