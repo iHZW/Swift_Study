@@ -14,8 +14,7 @@ private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/l
 
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    
-    open var dataArray : NSMutableArray?
+    private var dataArray : [HomeCellItem] = []
     //网格视图
     var mainCollectionView : UICollectionView?
     var request_nt: String = ""
@@ -24,6 +23,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.createUI()
+        
+        self.testRequest()
+
     }
 
     func createUI() {
@@ -58,7 +60,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     //collection dataSource/delegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return self.dataArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -68,14 +70,16 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kMyCollectionViewCellKey, for: indexPath) as! HomeCollectionViewCell
         cell.currentIndex = indexPath.row
-        if indexPath.row%3 == 0 {
-            cell.imageName = "default_image"
-        }else if indexPath.row%3 == 1 {
-            cell.imageName = "default_image_one"
-        }else{
-            cell.imageName = "default_image_two"
-        }
-        cell.titleName = "我是老\(indexPath.row)"
+//        if indexPath.row%3 == 0 {
+//            cell.imageName = "default_image"
+//        }else if indexPath.row%3 == 1 {
+//            cell.imageName = "default_image_one"
+//        }else{
+//            cell.imageName = "default_image_two"
+//        }
+//        cell.titleName = "我是老\(indexPath.row)"
+        cell.infoModel = self.dataArray[indexPath.row]
+        
         return cell
     }
     
@@ -100,22 +104,22 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //                let datas = Array<HomeCellItem>.deserialize(from: result.newsList as? NSArray) ?? []
                 //可以直接写明数组中的元素类型
                 let datas = result.newsList!
+                
+                if self.request_nt.validString() == true {
+                    self.dataArray = datas
+                }else{
+                    self.dataArray += datas
+                }
+                
                 if result.nt!.validString() == false {
                     self.request_nt = result.nt!
+                }else{
                 }
                 WFLog("\(datas)\n\(self.request_nt)")
+                //更新UI
+                self.mainCollectionView?.reloadData()
             }
         }
-        
-//        Alamofire.request(url!, method: HTTPMethod.post, parameters: parameters, encoding: URLEncoding.default, headers: nil).validate().responseJSON { (response) in
-//            if response.result.isSuccess
-//            {
-//                print("请求成功：\n\(response.result.value!)")
-//            }else
-//            {
-//                print("\(response.debugDescription)")
-//            }
-//        }
     }
     
     func testRequestTwo() {

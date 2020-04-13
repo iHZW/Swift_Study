@@ -143,6 +143,5 @@ class HomeCellItem: HandyJSON {
     var relListStocks: NSArray?
     var relatedBlocks: NSArray?
     var isRead: Bool?
-
     
 }

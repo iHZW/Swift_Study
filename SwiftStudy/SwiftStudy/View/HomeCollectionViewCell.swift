@@ -29,7 +29,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     public var imageName: String? {
         didSet{
-            self.imageView?.image = UIImage.init(named: self.imageName!)
+            let imageUrl: String = "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p53688.jpg"
+            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: self.imageName!), options: SDWebImageOptions.continueInBackground, completed: nil)
         }
     }
     
@@ -40,6 +41,18 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     public var currentIndex: NSInteger?
+    public var infoModel: HomeCellItem? {
+        willSet{
+            self.titleName = infoModel?.title
+            self.subTitle = infoModel?.label
+            let imageUrl: String = infoModel?.imgUrl! ?? ""
+            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
+        }
+    }
+    
+    func configCellModel(infoModel: HomeCellItem)  {
+        
+    }
   
     override init(frame: CGRect) {
         super.init(frame: frame)
