@@ -17,10 +17,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private var contentLabel : UILabel?
     private var subLabel: UILabel?
     
-    func configModel(model: HomeCellItem) {
-        
-    }
-    
     public var titleName : String?{
         didSet{
             self.contentLabel?.text = self.titleName
@@ -41,17 +37,22 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     public var currentIndex: NSInteger?
-    public var infoModel: HomeCellItem? {
-        willSet{
-            self.titleName = infoModel?.title
-            self.subTitle = infoModel?.label
-            let imageUrl: String = infoModel?.imgUrl! ?? ""
-            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
-        }
-    }
+    public var infoModel: HomeCellItem?
+//    {
+//        willSet{
+//            self.titleName = infoModel?.title
+//            self.subTitle = infoModel?.label
+//            let imageUrl: String = infoModel?.imgUrl! ?? ""
+//            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
+//        }
+//    }
     
-    func configCellModel(infoModel: HomeCellItem)  {
-        
+    func configModel(infoModel: HomeCellItem)  {
+        self.infoModel = infoModel
+        self.titleName = infoModel.title
+        self.subTitle = infoModel.label
+        let imageUrl: String = infoModel.imgUrl!
+        self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
     }
   
     override init(frame: CGRect) {

@@ -23,10 +23,37 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         self.createUI()
+        self.createNavgationUI()
         
         self.testRequest()
 
     }
+    
+    func createNavgationUI() {
+        let rightBtn = WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "加载更多", titleColor: .red, selector: #selector(requestNext), event: .touchUpInside)
+        let rightItem = UIBarButtonItem.init(customView: rightBtn)
+        //下边设置是无效的,直接设置navigationItem即可
+//        self.navigationController?.navigationItem.rightBarButtonItem = rightItem
+        self.navigationItem.rightBarButtonItem = rightItem
+
+        
+        
+        let leftBtn =  WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "刷新当期页", titleColor: .blue, selector: #selector(refreshHome), event: .touchUpInside)
+        let leftItem = UIBarButtonItem.init(customView: leftBtn)
+        self.navigationItem.leftBarButtonItem = leftItem
+    }
+    
+    //刷新首页
+    @objc func refreshHome() {
+        self.request_nt = ""
+        self.testRequest()
+    }
+    
+    //加载下一页数据
+    @objc func requestNext() {
+        self.testRequest()
+    }
+    
 
     func createUI() {
 
@@ -45,7 +72,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.mainCollectionView?.backgroundColor = UIColor.white
         self.mainCollectionView?.delegate = self
         self.mainCollectionView?.dataSource = self
-        self.mainCollectionView?.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: kMyCollectionViewCellKey)
+        self.mainCollectionView?.register(HomeCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: kMyCollectionViewCellKey)
         
         self.view.addSubview(self.mainCollectionView!)
     }
@@ -78,8 +105,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //            cell.imageName = "default_image_two"
 //        }
 //        cell.titleName = "我是老\(indexPath.row)"
-        cell.infoModel = self.dataArray[indexPath.row]
-        
+//        cell.infoModel = self.dataArray[indexPath.row]
+        let infoModel: HomeCellItem = self.dataArray[indexPath.row]
+        cell.configModel(infoModel: infoModel)
         return cell
     }
     
@@ -88,9 +116,9 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //        self.testRequestTwo()
 //        self.testRequestThree()
         
-//        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
-//        let name = cell.titleName ?? "没有传参"
-//        self.nextActon(index: indexPath.row, name: name)
+        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
+        let name = cell.titleName ?? "没有传参"
+        self.nextActon(index: indexPath.row, name: name)
     }
     
     func testRequest() {
