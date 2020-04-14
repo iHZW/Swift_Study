@@ -16,6 +16,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private var imageView: UIImageView?
     private var contentLabel : UILabel?
     private var subLabel: UILabel?
+    private var commentLabel: UILabel?
+    private var timeLabel: UILabel?
     
     public var titleName : String?{
         didSet{
@@ -35,6 +37,19 @@ class HomeCollectionViewCell: UICollectionViewCell {
             self.subLabel?.text = self.subTitle
         }
     }
+    public var commentString: String? {
+        didSet{
+            let comment: String = self.commentString! + "人阅读"
+            self.commentLabel?.text = comment
+        }
+    }
+    
+    public var timeString: String? {
+        didSet{
+            self.timeLabel?.text = getDateSringWithDateFoematter(dateFormat: "MM-dd HH:mm", dateString: self.timeString!)
+        }
+    }
+    
     
     public var currentIndex: NSInteger?
     public var infoModel: HomeCellItem?
@@ -51,6 +66,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.infoModel = infoModel
         self.titleName = infoModel.title
         self.subTitle = infoModel.label
+        self.commentString = infoModel.hotIndex
+        self.timeString = infoModel.publishTime
         let imageUrl: String = infoModel.imgUrl!
         self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
     }
@@ -71,11 +88,19 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.imageView!)
         
         self.contentLabel = WFCreateLabel(rect: CGRect.zero, title: "我是CollectionView", titleColor: HexColor(hex: 0xf82c88), alignment: NSTextAlignment.left, font: UIFont.systemFont(ofSize: 20))
+        self.contentLabel?.numberOfLines = 0
         self.contentLabel?.backgroundColor = UIColor.white
         self.contentView.addSubview(self.contentLabel!)
         
         self.subLabel = WFCreateLabel(rect: CGRect.zero, title: "小标题", titleColor: UIColor.lightGray, alignment: NSTextAlignment.left, font: UIFont.systemFont(ofSize: 13))
         self.contentView.addSubview(self.subLabel!)
+        
+        
+        self.commentLabel = WFCreateLabel(rect: CGRect.zero, title: "", titleColor: UIColor.lightGray, alignment: .left, font: .systemFont(ofSize: 13))
+        self.contentView.addSubview(self.commentLabel!)
+        
+        self.timeLabel = WFCreateLabel(rect: CGRect.zero, title: "", titleColor: .lightGray, alignment: .left, font: .systemFont(ofSize: 13))
+        self.contentView.addSubview(self.timeLabel!)
 
         //布局
         self.imageView?.snp.makeConstraints({ (make) in
@@ -90,7 +115,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
                 make.top.equalTo(self.imageView?.readableContentGuide.snp.bottom as! ConstraintRelatableTarget).offset(kAdjustSpace)
             }
             make.left.equalToSuperview().offset(kAdjustSpace)
-//            make.right.equalToSuperview()
+            make.right.equalToSuperview()
             make.height.equalTo(30)
         }
         
@@ -105,6 +130,25 @@ class HomeCollectionViewCell: UICollectionViewCell {
 //            make.right.equalToSuperview()
         })
         
+        self.commentLabel?.snp.makeConstraints({ (make) in
+            make.top.bottom.equalTo(self.subLabel!)
+            
+            if #available(iOS 11.0, *) {
+                make.left.equalTo(self.subLabel?.safeAreaLayoutGuide.snp.right as! ConstraintRelatableTarget).offset(kAdjustSpace)
+            } else {
+                make.left.equalTo(self.subLabel?.readableContentGuide.snp.right as! ConstraintRelatableTarget).offset(kAdjustSpace)
+            }
+        })
+        
+        self.timeLabel?.snp.makeConstraints({ (make) in
+            make.top.bottom.equalTo(self.subLabel!)
+            if #available(iOS 11.0, *) {
+                make.left.equalTo(self.commentLabel?.safeAreaLayoutGuide.snp.right as! ConstraintRelatableTarget).offset(kAdjustSpace)
+            } else {
+                make.left.equalTo(self.commentLabel?.readableContentGuide.snp.right as! ConstraintRelatableTarget).offset(kAdjustSpace)
+            }
+            make.right.equalToSuperview()
+        })
     }
     
     required init?(coder: NSCoder) {
