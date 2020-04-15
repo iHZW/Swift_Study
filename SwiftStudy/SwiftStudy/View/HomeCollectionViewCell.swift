@@ -46,7 +46,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     public var timeString: String? {
         didSet{
-            self.timeLabel?.text = getDateSringWithDateFoematter(dateFormat: "MM-dd HH:mm", dateString: self.timeString!)
+            self.timeLabel?.text = getInfoFormatterDateStringWithDateString(dateFormat: "yyyyMMddHHmmss", dateString: self.timeString!)
         }
     }
     

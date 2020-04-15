@@ -14,6 +14,7 @@ target 'SwiftStudy' do
   pod 'Alamofire'
   pod 'FLAnimatedImage'
   pod 'SDWebImage'
+  pod "ESPullToRefresh"
   
   # APP启动引导页,支持播放gif/png/jpg等类型的资源数组
 #  pod 'GuidePageView'

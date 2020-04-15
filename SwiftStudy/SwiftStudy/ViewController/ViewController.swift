@@ -112,14 +112,24 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.testRequest()
+//        self.testRequest()
 //        self.testRequestTwo()
 //        self.testRequestThree()
         
-        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
-        let name = cell.titleName ?? "没有传参"
-        self.nextActon(index: indexPath.row, name: name)
+//        let cell = collectionView.cellForItem(at: indexPath) as! HomeCollectionViewCell
+//        let name = cell.titleName ?? "没有传参"
+//        self.nextActon(index: indexPath.row, name: name)
+        let infoModel: HomeCellItem = self.dataArray[indexPath.row]
+        self.selectItemActoin(link: infoModel.detailLink!)
     }
+    
+    func selectItemActoin(link: String) {
+        let webViewCtrl = BaseWebViewController()
+        webViewCtrl.requestUrl = link
+        webViewCtrl.titleName = "资讯"
+        self.navigationController?.pushViewController(webViewCtrl, animated: true)
+    }
+        
     
     func testRequest() {
         var url = kRequestUrl
