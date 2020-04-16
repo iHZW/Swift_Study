@@ -16,7 +16,7 @@ class SecondViewController: BaseViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64, width: (kMainScreenWidth), height: kMainSCreenHeight - 64), style: UITableView.Style.plain)
+        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: (kMainScreenWidth), height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight), style: UITableView.Style.plain)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.rowHeight = 60

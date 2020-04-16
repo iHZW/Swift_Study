@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import ESPullToRefresh
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
@@ -16,7 +17,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 
     private var dataArray : [HomeCellItem] = []
     //网格视图
-    var mainCollectionView : UICollectionView?
+    var mainCollectionView : UICollectionView!
     var request_nt: String = ""
     
     override func viewDidLoad() {
@@ -58,7 +59,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     func createUI() {
 
         let collectionLayout = UICollectionViewFlowLayout.init()
-        collectionLayout.itemSize = CGSize.init(width: kMainScreenWidth/2 - kLeftSpace, height: 200)
+        collectionLayout.itemSize = CGSize.init(width: kMainScreenWidth/2 - kContentSideHorizSpace, height: 200)
         //设置cell上下之间的最小间距(纵向滚动,横向相反)
         collectionLayout.minimumLineSpacing = 10
         //设置cell左右之间的间距(纵向滚动,横向相反)
@@ -68,13 +69,47 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         //设置整个collectionView的边界约束
         collectionLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
 
-        self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 64, width: kMainScreenWidth, height: kMainSCreenHeight - 64), collectionViewLayout: collectionLayout)
-        self.mainCollectionView?.backgroundColor = UIColor.white
-        self.mainCollectionView?.delegate = self
-        self.mainCollectionView?.dataSource = self
-        self.mainCollectionView?.register(HomeCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: kMyCollectionViewCellKey)
+        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
+        //美团的样式
+        header = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
+        footer = MTRefreshFooterAnimator.init(frame: CGRect.zero)
         
-        self.view.addSubview(self.mainCollectionView!)
+        self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabbarHeight - kPORTRAIT_SAFE_AREA_BOTTOM_SPACE), collectionViewLayout: collectionLayout)
+        self.mainCollectionView.backgroundColor = UIColor.white
+        self.mainCollectionView.delegate = self
+        self.mainCollectionView.dataSource = self
+        self.mainCollectionView.register(HomeCollectionViewCell.classForCoder(), forCellWithReuseIdentifier: kMyCollectionViewCellKey)
+        self.view.addSubview(self.mainCollectionView)
+        
+//        self.mainCollectionView?.es.addPullToRefresh {
+//            self.request_nt = ""
+//            self.testRequest()
+//        }
+//
+//
+//        self.mainCollectionView?.es.addInfiniteScrolling {
+//            self.testRequest()
+//        }
+
+        
+        self.mainCollectionView.es.addPullToRefresh(animator: header, handler: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.request_nt = ""
+                self.testRequest()
+            }
+        })
+        
+        self.mainCollectionView.es.addInfiniteScrolling(animator: footer, handler: {
+            self.testRequest()
+        })
+
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            //自动请求
+            self.mainCollectionView.es.autoPullToRefresh()
+        }
+        
     }
     
     
@@ -145,8 +180,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 
                 if self.request_nt.validString() == true {
                     self.dataArray = datas
+                    self.mainCollectionView.es.stopPullToRefresh()
                 }else{
                     self.dataArray += datas
+                    self.mainCollectionView.es.stopLoadingMore()
                 }
                 
                 if result.nt!.validString() == false {
@@ -155,7 +192,10 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 }
                 WFLog("\(datas)\n\(self.request_nt)")
                 //更新UI
-                self.mainCollectionView?.reloadData()
+                self.mainCollectionView.reloadData()
+            }else{
+                self.mainCollectionView.es.stopPullToRefresh()
+                self.mainCollectionView.es.stopLoadingMore()
             }
         }
     }

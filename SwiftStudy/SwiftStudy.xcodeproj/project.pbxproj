@@ -34,6 +34,8 @@
 		7CA333FE2441A64E00AFE87C /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA333FD2441A64E00AFE87C /* HomeListModel.swift */; };
 		7CA3365B2445EEA200AFE87C /* DateFormatterFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3365A2445EEA200AFE87C /* DateFormatterFunc.swift */; };
 		7CA3365D24474D2B00AFE87C /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3365C24474D2B00AFE87C /* BaseWebViewController.swift */; };
+		7CB0C326244893550060F38C /* MTRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */; };
+		7CB0C327244893550060F38C /* MTRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		7CA3365024434C6900AFE87C /* swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		7CA3365A2445EEA200AFE87C /* DateFormatterFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFunc.swift; sourceTree = "<group>"; };
 		7CA3365C24474D2B00AFE87C /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
+		7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshFooterAnimator.swift; sourceTree = "<group>"; };
+		7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +174,7 @@
 		7C650CD5243CD62F00726BA4 /* SwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
+				7CB0C322244893550060F38C /* Meituan */,
 				7C81CE9F2440979800C1A60E /* View */,
 				7C81CE98243F418200C1A60E /* Model */,
 				7C81CE95243E1DB200C1A60E /* Util */,
@@ -287,6 +292,15 @@
 				7CA3365024434C6900AFE87C /* swift-Bridge-Objective-C.h */,
 			);
 			path = Bridge;
+			sourceTree = "<group>";
+		};
+		7CB0C322244893550060F38C /* Meituan */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */,
+				7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */,
+			);
+			path = Meituan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,8 +498,10 @@
 				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,
 				7C650CD7243CD62F00726BA4 /* AppDelegate.swift in Sources */,
 				7C81CE86243E150400C1A60E /* ThirdViewController.swift in Sources */,
+				7CB0C327244893550060F38C /* MTRefreshHeaderAnimator.swift in Sources */,
 				7C81CE9A243F418200C1A60E /* WFListInfoModel.swift in Sources */,
 				7C650CD9243CD62F00726BA4 /* SceneDelegate.swift in Sources */,
+				7CB0C326244893550060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
