@@ -34,8 +34,11 @@
 		7CA333FE2441A64E00AFE87C /* HomeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA333FD2441A64E00AFE87C /* HomeListModel.swift */; };
 		7CA3365B2445EEA200AFE87C /* DateFormatterFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3365A2445EEA200AFE87C /* DateFormatterFunc.swift */; };
 		7CA3365D24474D2B00AFE87C /* BaseWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3365C24474D2B00AFE87C /* BaseWebViewController.swift */; };
-		7CB0C326244893550060F38C /* MTRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */; };
-		7CB0C327244893550060F38C /* MTRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */; };
+		7CB0C3352449D4220060F38C /* WeChatTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C32B2449D4220060F38C /* WeChatTableHeaderView.swift */; };
+		7CB0C3372449D4220060F38C /* WCRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C32D2449D4220060F38C /* WCRefreshHeaderAnimator.swift */; };
+		7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C32F2449D4220060F38C /* MTRefreshFooterAnimator.swift */; };
+		7CB0C3392449D4220060F38C /* MTRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3302449D4220060F38C /* MTRefreshHeaderAnimator.swift */; };
+		7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,8 +98,11 @@
 		7CA3365024434C6900AFE87C /* swift-Bridge-Objective-C.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift-Bridge-Objective-C.h"; sourceTree = "<group>"; };
 		7CA3365A2445EEA200AFE87C /* DateFormatterFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterFunc.swift; sourceTree = "<group>"; };
 		7CA3365C24474D2B00AFE87C /* BaseWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWebViewController.swift; sourceTree = "<group>"; };
-		7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshFooterAnimator.swift; sourceTree = "<group>"; };
-		7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
+		7CB0C32B2449D4220060F38C /* WeChatTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChatTableHeaderView.swift; sourceTree = "<group>"; };
+		7CB0C32D2449D4220060F38C /* WCRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WCRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
+		7CB0C32F2449D4220060F38C /* MTRefreshFooterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshFooterAnimator.swift; sourceTree = "<group>"; };
+		7CB0C3302449D4220060F38C /* MTRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
+		7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshDayHeaderAnimator.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,7 +180,7 @@
 		7C650CD5243CD62F00726BA4 /* SwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
-				7CB0C322244893550060F38C /* Meituan */,
+				7CB0C3292449D4220060F38C /* RefreshAnimator */,
 				7C81CE9F2440979800C1A60E /* View */,
 				7C81CE98243F418200C1A60E /* Model */,
 				7C81CE95243E1DB200C1A60E /* Util */,
@@ -294,13 +300,40 @@
 			path = Bridge;
 			sourceTree = "<group>";
 		};
-		7CB0C322244893550060F38C /* Meituan */ = {
+		7CB0C3292449D4220060F38C /* RefreshAnimator */ = {
 			isa = PBXGroup;
 			children = (
-				7CB0C323244893550060F38C /* MTRefreshFooterAnimator.swift */,
-				7CB0C324244893550060F38C /* MTRefreshHeaderAnimator.swift */,
+				7CB0C32A2449D4220060F38C /* WeChat */,
+				7CB0C32E2449D4220060F38C /* Meituan */,
+				7CB0C3322449D4220060F38C /* Day */,
+			);
+			path = RefreshAnimator;
+			sourceTree = "<group>";
+		};
+		7CB0C32A2449D4220060F38C /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C32B2449D4220060F38C /* WeChatTableHeaderView.swift */,
+				7CB0C32D2449D4220060F38C /* WCRefreshHeaderAnimator.swift */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		7CB0C32E2449D4220060F38C /* Meituan */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C32F2449D4220060F38C /* MTRefreshFooterAnimator.swift */,
+				7CB0C3302449D4220060F38C /* MTRefreshHeaderAnimator.swift */,
 			);
 			path = Meituan;
+			sourceTree = "<group>";
+		};
+		7CB0C3322449D4220060F38C /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */,
+			);
+			path = Day;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,8 +518,11 @@
 				7CA3365D24474D2B00AFE87C /* BaseWebViewController.swift in Sources */,
 				7C81CE87243E150400C1A60E /* FifthViewController.swift in Sources */,
 				7C81CEA22440979800C1A60E /* WFCommonCell.swift in Sources */,
+				7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */,
+				7CB0C3352449D4220060F38C /* WeChatTableHeaderView.swift in Sources */,
 				7C81CEAB2441948D00C1A60E /* WFRequestDataLoader.swift in Sources */,
 				7C81CEA92440B44900C1A60E /* UIColorCreate.swift in Sources */,
+				7CB0C3392449D4220060F38C /* MTRefreshHeaderAnimator.swift in Sources */,
 				7C81CE84243E150400C1A60E /* MainTabBarController.swift in Sources */,
 				7C81CE88243E150400C1A60E /* FourthViewController.swift in Sources */,
 				7C81CE97243E1DB200C1A60E /* Const.swift in Sources */,
@@ -494,14 +530,14 @@
 				7CA3365B2445EEA200AFE87C /* DateFormatterFunc.swift in Sources */,
 				7C81CEA72440987800C1A60E /* ViewController.swift in Sources */,
 				7C81CE8F243E1B4600C1A60E /* ViewDetailPage.swift in Sources */,
+				7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 				7C81CEA32440979800C1A60E /* HomeCollectionViewCell.swift in Sources */,
 				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,
+				7CB0C3372449D4220060F38C /* WCRefreshHeaderAnimator.swift in Sources */,
 				7C650CD7243CD62F00726BA4 /* AppDelegate.swift in Sources */,
 				7C81CE86243E150400C1A60E /* ThirdViewController.swift in Sources */,
-				7CB0C327244893550060F38C /* MTRefreshHeaderAnimator.swift in Sources */,
 				7C81CE9A243F418200C1A60E /* WFListInfoModel.swift in Sources */,
 				7C650CD9243CD62F00726BA4 /* SceneDelegate.swift in Sources */,
-				7CB0C326244893550060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

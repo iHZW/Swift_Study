@@ -10,6 +10,13 @@ import UIKit
 import Alamofire
 import ESPullToRefresh
 
+public enum ESRefreshAnimatorType: String {
+    case defaultTyoe = "DefaultType"
+    case meituan = "MeiTuanType"
+    case wechat = "WeChat"
+    case day = "Day"
+}
+
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
 
@@ -19,13 +26,37 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //网格视图
     var mainCollectionView : UICollectionView!
     var request_nt: String = ""
+    var headerAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
+    var footAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
+
+    var refreshAnimatorType: ESRefreshAnimatorType? {
+        didSet{
+            switch refreshAnimatorType {
+            case .meituan:
+                headerAnimator = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = MTRefreshFooterAnimator.init(frame: CGRect.zero)
+                break
+            case .wechat:
+                headerAnimator = WCRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            case .day:
+                headerAnimator = ESRefreshDayHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            default:
+                headerAnimator = ESRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
+        
+        refreshAnimatorType = .day
+
         self.createUI()
         self.createNavgationUI()
-        
         self.testRequest()
 
     }
@@ -69,12 +100,12 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         //设置整个collectionView的边界约束
         collectionLayout.sectionInset = UIEdgeInsets.init(top: 10, left: 10, bottom: 10, right: 10)
 
-        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
-        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
-        //美团的样式
-        header = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
-        footer = MTRefreshFooterAnimator.init(frame: CGRect.zero)
-        
+//        var header: ESRefreshProtocol & ESRefreshAnimatorProtocol
+//        var footer: ESRefreshProtocol & ESRefreshAnimatorProtocol
+//        //美团的样式
+//        header = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
+//        footer = MTRefreshFooterAnimator.init(frame: CGRect.zero)
+//
         self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabbarHeight - kPORTRAIT_SAFE_AREA_BOTTOM_SPACE), collectionViewLayout: collectionLayout)
         self.mainCollectionView.backgroundColor = UIColor.white
         self.mainCollectionView.delegate = self
@@ -93,14 +124,14 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //        }
 
         
-        self.mainCollectionView.es.addPullToRefresh(animator: header, handler: {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        self.mainCollectionView.es.addPullToRefresh(animator: self.headerAnimator, handler: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.request_nt = ""
                 self.testRequest()
             }
         })
         
-        self.mainCollectionView.es.addInfiniteScrolling(animator: footer, handler: {
+        self.mainCollectionView.es.addInfiniteScrolling(animator: self.footAnimator, handler: {
             self.testRequest()
         })
 
