@@ -39,6 +39,9 @@
 		7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C32F2449D4220060F38C /* MTRefreshFooterAnimator.swift */; };
 		7CB0C3392449D4220060F38C /* MTRefreshHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3302449D4220060F38C /* MTRefreshHeaderAnimator.swift */; };
 		7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */; };
+		7CB0C340244AAAEE0060F38C /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C33F244AAAEE0060F38C /* Student.swift */; };
+		7CB0C343244DED400060F38C /* CenterSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C342244DED400060F38C /* CenterSegmentView.swift */; };
+		7CB0C346244E011A0060F38C /* WFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C345244E011A0060F38C /* WFNavigation.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +106,9 @@
 		7CB0C32F2449D4220060F38C /* MTRefreshFooterAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshFooterAnimator.swift; sourceTree = "<group>"; };
 		7CB0C3302449D4220060F38C /* MTRefreshHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MTRefreshHeaderAnimator.swift; sourceTree = "<group>"; };
 		7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ESRefreshDayHeaderAnimator.swift; sourceTree = "<group>"; };
+		7CB0C33F244AAAEE0060F38C /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		7CB0C342244DED400060F38C /* CenterSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterSegmentView.swift; sourceTree = "<group>"; };
+		7CB0C345244E011A0060F38C /* WFNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFNavigation.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +186,8 @@
 		7C650CD5243CD62F00726BA4 /* SwiftStudy */ = {
 			isa = PBXGroup;
 			children = (
+				7CB0C344244E010A0060F38C /* Navigator */,
+				7CB0C341244DED3A0060F38C /* SegmentVC */,
 				7CB0C3292449D4220060F38C /* RefreshAnimator */,
 				7C81CE9F2440979800C1A60E /* View */,
 				7C81CE98243F418200C1A60E /* Model */,
@@ -272,6 +280,7 @@
 			children = (
 				7C81CE99243F418200C1A60E /* WFListInfoModel.swift */,
 				7CA333FD2441A64E00AFE87C /* HomeListModel.swift */,
+				7CB0C33F244AAAEE0060F38C /* Student.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -334,6 +343,22 @@
 				7CB0C3342449D4220060F38C /* ESRefreshDayHeaderAnimator.swift */,
 			);
 			path = Day;
+			sourceTree = "<group>";
+		};
+		7CB0C341244DED3A0060F38C /* SegmentVC */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C342244DED400060F38C /* CenterSegmentView.swift */,
+			);
+			path = SegmentVC;
+			sourceTree = "<group>";
+		};
+		7CB0C344244E010A0060F38C /* Navigator */ = {
+			isa = PBXGroup;
+			children = (
+				7CB0C345244E011A0060F38C /* WFNavigation.swift */,
+			);
+			path = Navigator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,10 +539,12 @@
 				7CA333FE2441A64E00AFE87C /* HomeListModel.swift in Sources */,
 				7C81CEA5244097C700C1A60E /* CheckString.swift in Sources */,
 				7C81CE94243E1D8800C1A60E /* BaseNavigationController.swift in Sources */,
+				7CB0C343244DED400060F38C /* CenterSegmentView.swift in Sources */,
 				7C81CE89243E150400C1A60E /* SecondViewController.swift in Sources */,
 				7CA3365D24474D2B00AFE87C /* BaseWebViewController.swift in Sources */,
 				7C81CE87243E150400C1A60E /* FifthViewController.swift in Sources */,
 				7C81CEA22440979800C1A60E /* WFCommonCell.swift in Sources */,
+				7CB0C346244E011A0060F38C /* WFNavigation.swift in Sources */,
 				7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */,
 				7CB0C3352449D4220060F38C /* WeChatTableHeaderView.swift in Sources */,
 				7C81CEAB2441948D00C1A60E /* WFRequestDataLoader.swift in Sources */,
@@ -530,6 +557,7 @@
 				7CA3365B2445EEA200AFE87C /* DateFormatterFunc.swift in Sources */,
 				7C81CEA72440987800C1A60E /* ViewController.swift in Sources */,
 				7C81CE8F243E1B4600C1A60E /* ViewDetailPage.swift in Sources */,
+				7CB0C340244AAAEE0060F38C /* Student.swift in Sources */,
 				7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 				7C81CEA32440979800C1A60E /* HomeCollectionViewCell.swift in Sources */,
 				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,

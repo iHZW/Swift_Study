@@ -7,24 +7,31 @@
 //
 
 import UIKit
-import WebKit
 
 class FourthViewController: BaseViewController {
 
-    var wkWebView : WKWebView?
+    private var myStudent: Student?
+    
+    private var titleArray: [String] = ["普吉岛","夏威夷","洛杉矶","杭州","长城"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //初始化WKWebView
-        self.wkWebView = WKWebView.init(frame: self.view.frame)
-        //添加一个简单的html页面
-        self.wkWebView?.load(URLRequest.init(url: NSURL.init(string: "https://www.baidu.com")! as URL))
-        //加载本地html资源
-//        self.wkWebView.load(URLRequest.init(url: URL.init(fileURLWithPath: Bundle.main.path(forResource: "index", ofType: "html")!)))
         
-        self.view.addSubview(self.wkWebView!)
-        // Do any additional setup after loading the view.
+        
+        self.view.addSubview(self.segmentView)
     }
     
+    lazy var segmentView: CenterSegmentView = {
+        let vc1 = ViewController()
+        vc1.view.frame = CGRect.init(x: 0, y: -kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kMainTabbarHeight)
+        let vc2 = SecondViewController()
+        let vc3 = ThirdViewController()
+        let vc4 = ViewDetailPage()
+        let vc5 = FifthViewController()
+        let controllers = [vc1, vc2, vc3, vc4, vc5]
+        
+        let segmentView = CenterSegmentView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabbarHeight), normalFont: PASFont(fontSize: 10), selectFont: PASFont(fontSize: 15), normalColor: HexColor(hex: 0x111111), selectColor: HexColor(hex: 0xE2233E), controllers: controllers, titleArray: self.titleArray, selectIndex: 0)
+        return segmentView
+    }()
 }

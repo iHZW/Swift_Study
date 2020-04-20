@@ -23,6 +23,7 @@ private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/l
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     private var dataArray : [HomeCellItem] = []
+    private var tempCount: Int = 1
     //网格视图
     var mainCollectionView : UICollectionView!
     var request_nt: String = ""
@@ -77,13 +78,19 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     
     //刷新首页
     @objc func refreshHome() {
-        self.request_nt = ""
-        self.testRequest()
+//        self.request_nt = ""
+//        self.testRequest()
+//        tempCount += 1
+//        WFLog("refreshTempCount = \(tempCount)")
+        self.present(ViewDetailPage(), animated: true, completion: nil)
     }
     
     //加载下一页数据
     @objc func requestNext() {
         self.testRequest()
+        
+        tempCount -= 1
+        WFLog("moreTempCount = \(tempCount)")
     }
     
 

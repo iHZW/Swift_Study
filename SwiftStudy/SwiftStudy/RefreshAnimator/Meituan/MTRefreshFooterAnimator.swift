@@ -34,7 +34,7 @@ public class MTRefreshFooterAnimator: UIView, ESRefreshProtocol, ESRefreshAnimat
     }()
     private let titleLabel: UILabel = {
         let label = UILabel.init(frame: CGRect.zero)
-        label.font = UIFont.systemFont(ofSize: 14.0)
+        label.font = PASFont(fontSize: 14.0)
         label.textColor = UIColor.init(white: 160.0 / 255.0, alpha: 1.0)
         label.textAlignment = .center
         return label

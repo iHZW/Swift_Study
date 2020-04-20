@@ -87,7 +87,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.imageView = WFCreateImageView(rect: CGRect.zero, imageName: "default_image")
         self.contentView.addSubview(self.imageView!)
         
-        self.contentLabel = WFCreateLabel(rect: CGRect.zero, title: "我是CollectionView", titleColor: HexColor(hex: 0xf82c88), alignment: NSTextAlignment.left, font: UIFont.systemFont(ofSize: 20))
+        self.contentLabel = WFCreateLabel(rect: CGRect.zero, title: "我是CollectionView", titleColor: HexColor(hex: 0xf82c88), alignment: NSTextAlignment.left, font: PASFont(fontSize: 20.0))
         self.contentLabel?.numberOfLines = 0
         self.contentLabel?.backgroundColor = UIColor.white
         self.contentView.addSubview(self.contentLabel!)

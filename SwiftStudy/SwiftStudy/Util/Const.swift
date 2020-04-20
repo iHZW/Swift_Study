@@ -34,6 +34,12 @@ public let kLANDSCAPE_SAFE_AREA_RIGHT_SPACE = (IS_IPHONE_X() ? CGFloat(44) : 0)
 // IPhoneX 横屏安全区域底部空白
 public let kLANDSCAPE_SAFE_AREA_BOTTOM_SPACE = (IS_IPHONE_X() ? CGFloat(21) : 0)
 
+//返回UIFont
+func PASFont(fontSize: CGFloat) -> UIFont {
+    let font = UIFont.systemFont(ofSize: fontSize)
+    return font
+}
+
 
 //判断是否是iphoneX系列的手机
 func IS_IPHONE_X() ->Bool {

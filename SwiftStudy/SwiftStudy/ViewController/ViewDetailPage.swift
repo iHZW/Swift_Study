@@ -43,6 +43,12 @@ class ViewDetailPage: BaseViewController {
         //测试数组排序
         let reversed = names.sorted(by: backwards(s1:s2:))
         WFLog("names = \(names) \n reversed = \(reversed)")
+        
+        
+        let tempVC = UIViewController.current()
+        let tempNav = kCurrentNavigationController()
+        
+        self.dismiss(animated: true, completion: nil)
     }
     //降序排列
     func backwards (s1: String, s2: String) -> Bool{
@@ -63,7 +69,22 @@ class ViewDetailPage: BaseViewController {
     //实现跳转到第三页根控制器
     @objc func nextAction() {
         self.navigationController?.tabBarController?.selectedIndex = 2
-        self.navigationController?.popToRootViewController(animated: true)
+//        if (self.navigationController?.children.count)! > 0 {
+//            self.navigationController?.popToRootViewController(animated: true)
+//        }else{
+//            self.navigationController?.tabBarController?.selectedIndex = 1
+//        }
+        
+        if self.navigationController != nil {
+            self.navigationController?.tabBarController?.selectedIndex = 2
+            self.navigationController?.popViewController(animated: true)
+        }else{
+//            let currentNav = self.currentNavViewController()
+//            currentNav?.tabBarController?.selectedIndex = 2
+            let currentVC = UIViewController.current()
+//            currentVC.navigationController?.tabBarController?.selectedIndex = 2
+            kCurrentNavigationController().tabBarController?.selectedIndex = 2
+        }
     }
     
     @objc func popAction() {
@@ -74,6 +95,19 @@ class ViewDetailPage: BaseViewController {
         WFLog("点击了: \(String(describing: button.titleLabel?.text))")
     }
     
+    
+    ///获取当前视图所在导航控制器
+    func currentNavViewController() -> UINavigationController? {
+        var n = next
+        while n != nil {
+            if n is UINavigationController {
+                return n as? UINavigationController
+            }
+            n = n?.next
+        }
+        return nil
+    }
+        
     
     /*
     // MARK: - Navigation
