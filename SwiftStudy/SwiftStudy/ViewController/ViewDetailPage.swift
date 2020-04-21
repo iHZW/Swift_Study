@@ -48,6 +48,8 @@ class ViewDetailPage: BaseViewController {
         let tempVC = UIViewController.current()
         let tempNav = kCurrentNavigationController()
         
+        tempNav.tabBarController?.selectedIndex = 3
+        
         self.dismiss(animated: true, completion: nil)
     }
     //降序排列

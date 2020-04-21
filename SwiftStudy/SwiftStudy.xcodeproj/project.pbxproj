@@ -42,6 +42,7 @@
 		7CB0C340244AAAEE0060F38C /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C33F244AAAEE0060F38C /* Student.swift */; };
 		7CB0C343244DED400060F38C /* CenterSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C342244DED400060F38C /* CenterSegmentView.swift */; };
 		7CB0C346244E011A0060F38C /* WFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C345244E011A0060F38C /* WFNavigation.swift */; };
+		7CB0C34B244F2B180060F38C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34A244F2B180060F38C /* LoginViewController.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +110,7 @@
 		7CB0C33F244AAAEE0060F38C /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		7CB0C342244DED400060F38C /* CenterSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterSegmentView.swift; sourceTree = "<group>"; };
 		7CB0C345244E011A0060F38C /* WFNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFNavigation.swift; sourceTree = "<group>"; };
+		7CB0C34A244F2B180060F38C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,6 +243,7 @@
 				7C81CE80243E150400C1A60E /* FifthViewController.swift */,
 				7C81CE81243E150400C1A60E /* FourthViewController.swift */,
 				7C81CE82243E150400C1A60E /* SecondViewController.swift */,
+				7CB0C34A244F2B180060F38C /* LoginViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */,
 				7CB0C3352449D4220060F38C /* WeChatTableHeaderView.swift in Sources */,
 				7C81CEAB2441948D00C1A60E /* WFRequestDataLoader.swift in Sources */,
+				7CB0C34B244F2B180060F38C /* LoginViewController.swift in Sources */,
 				7C81CEA92440B44900C1A60E /* UIColorCreate.swift in Sources */,
 				7CB0C3392449D4220060F38C /* MTRefreshHeaderAnimator.swift in Sources */,
 				7C81CE84243E150400C1A60E /* MainTabBarController.swift in Sources */,
