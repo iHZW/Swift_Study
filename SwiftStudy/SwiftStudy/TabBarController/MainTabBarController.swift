@@ -10,7 +10,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    var navCtrlArray: NSMutableArray? = NSMutableArray.init()
+    private var navCtrlArray: NSMutableArray? = NSMutableArray.init()
     
     //MARK: --setter getter
     var _lastSelectedIndex: NSInteger!
@@ -37,7 +37,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let titleArray: [String] = ["首页", "第二页", "第三页", "第四页", "我的"]
 
         var currentIndex: Int = 0
-        for _ in 0...4 {
+        for _ in controllerArray {
             
             addTabBarChildViewControl(childVC: controllerArray[currentIndex], title: titleArray[currentIndex], imageName: normalImageArray[currentIndex], selectImageName: selectImageArray[currentIndex], index: currentIndex)
             

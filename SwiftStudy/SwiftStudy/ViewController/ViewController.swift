@@ -113,7 +113,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 //        header = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
 //        footer = MTRefreshFooterAnimator.init(frame: CGRect.zero)
 //
-        self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabbarHeight - kPORTRAIT_SAFE_AREA_BOTTOM_SPACE), collectionViewLayout: collectionLayout)
+        self.mainCollectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabBarHeight - kPORTRAIT_SAFE_AREA_BOTTOM_SPACE), collectionViewLayout: collectionLayout)
         self.mainCollectionView.backgroundColor = UIColor.white
         self.mainCollectionView.delegate = self
         self.mainCollectionView.dataSource = self

@@ -15,7 +15,7 @@ public let kContentSideVertiSpace = CGFloat(10) //上下控件通用距离
 
 public let kMainScreenWidth = UIScreen.main.bounds.size.width
 public let kMainSCreenHeight = UIScreen.main.bounds.size.height
-public let kMainTabbarHeight = CGFloat(49) //底部tabBar的高度
+public let kMainTabBarHeight = CGFloat(49) //底部tabBar的高度
 public let kMainNavHeight = CGFloat(44) // 系统导航栏高度
 //系统状态栏高度
 public let kSysStatuesBarHeight = min(UIApplication.shared.statusBarFrame.size.height, UIApplication.shared.statusBarFrame.size.width)

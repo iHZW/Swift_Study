@@ -43,6 +43,9 @@
 		7CB0C343244DED400060F38C /* CenterSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C342244DED400060F38C /* CenterSegmentView.swift */; };
 		7CB0C346244E011A0060F38C /* WFNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C345244E011A0060F38C /* WFNavigation.swift */; };
 		7CB0C34B244F2B180060F38C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34A244F2B180060F38C /* LoginViewController.swift */; };
+		7CB0C34D24508A540060F38C /* WFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34C24508A540060F38C /* WFTableViewController.swift */; };
+		7CB0C34F245093960060F38C /* WFBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34E245093960060F38C /* WFBaseTableView.swift */; };
+		7CB0C3512450A8430060F38C /* SimpleWFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +114,9 @@
 		7CB0C342244DED400060F38C /* CenterSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterSegmentView.swift; sourceTree = "<group>"; };
 		7CB0C345244E011A0060F38C /* WFNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFNavigation.swift; sourceTree = "<group>"; };
 		7CB0C34A244F2B180060F38C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7CB0C34C24508A540060F38C /* WFTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFTableViewController.swift; sourceTree = "<group>"; };
+		7CB0C34E245093960060F38C /* WFBaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFBaseTableView.swift; sourceTree = "<group>"; };
+		7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWFTableViewController.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -244,6 +250,7 @@
 				7C81CE81243E150400C1A60E /* FourthViewController.swift */,
 				7C81CE82243E150400C1A60E /* SecondViewController.swift */,
 				7CB0C34A244F2B180060F38C /* LoginViewController.swift */,
+				7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -253,6 +260,8 @@
 			children = (
 				7CA3365C24474D2B00AFE87C /* BaseWebViewController.swift */,
 				7C81CE8C243E178900C1A60E /* BaseViewController.swift */,
+				7CB0C34E245093960060F38C /* WFBaseTableView.swift */,
+				7CB0C34C24508A540060F38C /* WFTableViewController.swift */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -550,6 +559,7 @@
 				7CB0C346244E011A0060F38C /* WFNavigation.swift in Sources */,
 				7CB0C33C2449D4220060F38C /* ESRefreshDayHeaderAnimator.swift in Sources */,
 				7CB0C3352449D4220060F38C /* WeChatTableHeaderView.swift in Sources */,
+				7CB0C34F245093960060F38C /* WFBaseTableView.swift in Sources */,
 				7C81CEAB2441948D00C1A60E /* WFRequestDataLoader.swift in Sources */,
 				7CB0C34B244F2B180060F38C /* LoginViewController.swift in Sources */,
 				7C81CEA92440B44900C1A60E /* UIColorCreate.swift in Sources */,
@@ -565,6 +575,8 @@
 				7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 				7C81CEA32440979800C1A60E /* HomeCollectionViewCell.swift in Sources */,
 				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,
+				7CB0C34D24508A540060F38C /* WFTableViewController.swift in Sources */,
+				7CB0C3512450A8430060F38C /* SimpleWFTableViewController.swift in Sources */,
 				7CB0C3372449D4220060F38C /* WCRefreshHeaderAnimator.swift in Sources */,
 				7C650CD7243CD62F00726BA4 /* AppDelegate.swift in Sources */,
 				7C81CE86243E150400C1A60E /* ThirdViewController.swift in Sources */,

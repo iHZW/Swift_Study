@@ -10,10 +10,6 @@ import UIKit
 
 class CenterSegmentView: UIView{
     
-    /// huidiao
-    typealias PageBlock = (_ selectedIndex:Int)->Void
-    var pageBlock:PageBlock?
-    
     /// 分页标题数组
     var nameArray:[String] = []
     
@@ -46,6 +42,13 @@ class CenterSegmentView: UIView{
     
     /// 占比
     private var offsetX = 0
+    
+    /// huidiao
+    typealias PageBlock = (_ selectIndex:Int)->Void
+    var pageBlock:PageBlock? = {
+        (selectIndex: Int) in
+        WFLog("selectIndex = \(selectIndex)")
+    }
     
     /// 包含分页标题view
     lazy var segmentView:UIScrollView = {
@@ -210,7 +213,7 @@ extension CenterSegmentView:UIGestureRecognizerDelegate{
     }
 }
 
-extension CenterSegmentView:UIScrollViewDelegate{
+extension CenterSegmentView: UIScrollViewDelegate{
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let btn = self.segmentView.viewWithTag(Int(self.segmentScrollV.contentOffset.x / self.frame.size.width))
