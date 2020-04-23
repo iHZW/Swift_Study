@@ -94,8 +94,8 @@
             filePath = "SwiftStudy/SegmentVC/CenterSegmentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "init(frame:controllers:titleArray:selectIndex:lineHeight:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -129,22 +129,6 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "tableView(_:didSelectRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7333F706-7057-4815-B93C-7CFF5C810565"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftStudy/BaseViewController/WFBaseTableView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "addInfiniteScrolling(animatorType:handler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

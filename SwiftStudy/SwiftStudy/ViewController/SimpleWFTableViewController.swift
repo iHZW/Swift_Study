@@ -69,8 +69,6 @@ class SimpleWFTableViewController: WFTableViewController {
             
         }
         
-        
-        
         // Do any additional setup after loading the view.
     }
     

@@ -32,7 +32,7 @@ class CenterSegmentView: UIView{
     var lineSelectedColor = UIColor.orange
     
     /// 分割线颜色
-    var downColor = UIColor.gray
+    var downColor = HexColor(hex: 0xEDEDED)
     
     /// 选中的index
     var selectedIndex:Int = 0
@@ -40,8 +40,14 @@ class CenterSegmentView: UIView{
     /// 底部滑块高度
     var lineHeight:CGFloat = 1
     
+    /// 底部滑块宽度
+    var lineWidth: CGFloat = 25
+    
     /// 占比
     private var offsetX = 0
+
+    /// 显示item的宽度
+    var itemWidth: CGFloat!
     
     /// huidiao
     typealias PageBlock = (_ selectIndex:Int)->Void
@@ -103,6 +109,7 @@ class CenterSegmentView: UIView{
         self.normalFont = normalFont
         self.titleNormalColor = normalColor
         self.titleSelectColor = selectColor
+        self.lineSelectedColor = selectColor
         self.controllers = controllers
         self.nameArray = titleArray
         self.selectedIndex = selectIndex
@@ -114,7 +121,11 @@ class CenterSegmentView: UIView{
             return
         }
         //宽度
-        let avgWidth = frame.size.width / CGFloat(self.controllers.count)
+        self.itemWidth = frame.size.width / CGFloat(controllers.count)
+        if controllers.count > 5 {
+            self.itemWidth = (frame.size.width - 30) / 5
+        }
+        
         self.segmentView.frame = CGRect(x: 0, y: 0, width:frame.size.width, height: segmentScrollVHeight)
         self.segmentView.tag = 50
         self.addSubview(self.segmentView)
@@ -138,8 +149,9 @@ class CenterSegmentView: UIView{
         
         for (index,_)in controllers.enumerated(){
             let btn = UIButton(type: UIButton.ButtonType.custom)
-            btn.frame = CGRect(x: CGFloat(index) * frame.size.width / CGFloat(controllers.count), y: 0, width: frame.size.width / CGFloat(controllers.count), height: self.segmentScrollVHeight)
+            btn.frame = CGRect(x: CGFloat(index) * self.itemWidth, y: 0, width: self.itemWidth, height: self.segmentScrollVHeight)
             btn.backgroundColor = UIColor.white
+            btn.titleLabel?.adjustsFontSizeToFitWidth = true
             btn.tag = index
             btn.setTitle(self.nameArray[index], for: .normal)
             btn.setTitleColor(self.titleNormalColor, for: .normal)
@@ -158,21 +170,25 @@ class CenterSegmentView: UIView{
                 btn.titleLabel?.font = self.normalFont
             }
             self.segmentView.addSubview(btn)
+            self.segmentView.contentSize = CGSize(width: self.itemWidth * CGFloat(controllers.count), height: 0)
         }
         
         //分割线
-        let downFrame = CGRect(x: 0, y: 40, width: frame.size.width, height: 0.5)
+        let downFrame = CGRect(x: 0, y: 40, width: self.itemWidth * CGFloat(controllers.count), height: 0.5)
         self.down = UILabel(frame: downFrame)
         self.down.backgroundColor = self.downColor
         self.segmentView.addSubview(self.down)
         
-        let lineFrame = CGRect(x: avgWidth * CGFloat(selectedIndex), y: self.segmentScrollVHeight - self.lineHeight, width: avgWidth, height: self.lineHeight)
+        
+        let lineFrame = CGRect(x: self.itemWidth * CGFloat(selectedIndex), y: self.segmentScrollVHeight - self.lineHeight - 2, width: self.lineWidth, height: self.lineHeight)
         self.line = UILabel(frame: lineFrame)
         self.line.backgroundColor = self.lineSelectedColor
         self.line.tag = 100
         //初始化位置
         var lineCeter = self.line.center
-        lineCeter.x = frame.size.width / CGFloat(controllers.count * 2) + frame.size.width / CGFloat(controllers.count) * CGFloat(self.seleBtn.tag)
+//        lineCeter.x = frame.size.width / CGFloat(controllers.count * 2) + frame.size.width / CGFloat(controllers.count) * CGFloat(self.seleBtn.tag)
+        lineCeter.x = (self.itemWidth * CGFloat(selectedIndex) + self.itemWidth/2)
+
         self.line.center = lineCeter
         self.segmentView.addSubview(self.line)
     }
@@ -189,11 +205,27 @@ class CenterSegmentView: UIView{
         self.seleBtn.isSelected = false
         self.seleBtn = sender
         self.pageBlock?(sender.tag)
-        
+        self.selectedIndex = sender.tag
         self.seleBtn.titleLabel?.font = self.selectFont
         self.seleBtn.isSelected = true
         
         self.segmentScrollV.setContentOffset(CGPoint(x: CGFloat(sender.tag) * self.frame.size.width, y: 0), animated: true)
+            
+        // MARK: -- 计算顶部滚动视图偏移量
+        var point_x = CGFloat(sender.tag) * self.itemWidth
+        //最大移动距离
+        let max_X = self.itemWidth * CGFloat(controllers.count) - CGFloat(self.frame.size.width)
+        if (point_x > CGFloat(self.frame.size.width) / 2){
+            if CGFloat(point_x - CGFloat(self.frame.size.width) / 2) < max_X{
+                point_x = point_x - CGFloat(self.frame.size.width) / 2
+            }else{
+                point_x = max_X
+            }
+        }else{
+            point_x = 0
+        }
+        self.segmentView.setContentOffset(CGPoint(x: point_x, y: 0), animated: true)
+        
 //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SelectVC"), object: sender, userInfo: nil)
     }
     
@@ -222,6 +254,7 @@ extension CenterSegmentView: UIScrollViewDelegate{
         if let button = btn {
             self.seleBtn = button as! UIButton
             self.seleBtn.isSelected = true
+            self.selectedIndex = self.seleBtn.tag
             self.seleBtn.titleLabel?.font = self.selectFont
             self.pageBlock?(button.tag)
         }
@@ -229,11 +262,26 @@ extension CenterSegmentView: UIScrollViewDelegate{
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-
-        let itemWidth = scrollView.bounds.width / CGFloat(controllers.count)
-        let offsetX = (itemWidth / scrollView.bounds.width) * scrollView.contentOffset.x
-        let xoffset = offsetX - (CGFloat(self.selectedIndex) * itemWidth)
+        
+        let offsetX = (self.itemWidth / scrollView.bounds.width) * scrollView.contentOffset.x
+        let xoffset = offsetX
         self.line.transform = CGAffineTransform(translationX: xoffset, y: 0)
+        
+        
+        // MARK: -- 同步顶部滚动视图偏移量
+        var point_x = CGFloat(scrollView.contentOffset.x/scrollView.bounds.width) * self.itemWidth
+        //最大移动距离
+        let max_X = self.itemWidth * CGFloat(controllers.count) - CGFloat(self.frame.size.width)
+        if (point_x > CGFloat(self.frame.size.width) / 2){
+            if CGFloat(point_x - CGFloat(self.frame.size.width) / 2) < max_X{
+                point_x = point_x - CGFloat(self.frame.size.width) / 2
+            }else{
+                point_x = max_X
+            }
+        }else{
+            point_x = 0
+        }
+        self.segmentView.setContentOffset(CGPoint(x: point_x, y: 0), animated: true)
         
     }
 }
