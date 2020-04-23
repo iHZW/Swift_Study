@@ -9,6 +9,18 @@
 import UIKit
 import ESPullToRefresh
 
+public enum ESRefreshAnimatorType: String {
+    //默认类型
+    case defaultTyoe = "DefaultType"
+    //美团类型
+    case meituan = "MeiTuanType"
+    //微信类型
+    case wechat = "WeChat"
+    //其他类型
+    case day = "Day"
+}
+
+
 class WFBaseTableView: UITableView {
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -21,13 +33,37 @@ class WFBaseTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+   
+    private var headerAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
+    private var footAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
+   
+    private var refreshAnimatorType: ESRefreshAnimatorType? {
+        didSet{
+            switch refreshAnimatorType {
+            case .meituan:
+                headerAnimator = MTRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = MTRefreshFooterAnimator.init(frame: CGRect.zero)
+                break
+            case .wechat:
+                headerAnimator = WCRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            case .day:
+                headerAnimator = ESRefreshDayHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            default:
+                headerAnimator = ESRefreshHeaderAnimator.init(frame: CGRect.zero)
+                footAnimator = ESRefreshFooterAnimator.init(frame: CGRect.zero)
+            }
+        }
+    }
     
     func addPullToRefresh(handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
         self.es.addPullToRefresh(handler: handler)
     }
     
-    func addPullToRefresh(animator: ESRefreshProtocol & ESRefreshAnimatorProtocol, handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
-        self.es.addPullToRefresh(animator: animator, handler: handler)
+    func addPullToRefresh(animatorType: ESRefreshAnimatorType, handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
+        self.refreshAnimatorType = animatorType
+        return self.es.addPullToRefresh(animator: self.headerAnimator, handler: handler)
     }
     
     
@@ -35,8 +71,9 @@ class WFBaseTableView: UITableView {
         self.es.addInfiniteScrolling(handler: handler)
     }
     
-    func addInfiniteScrolling(animator: ESRefreshProtocol & ESRefreshAnimatorProtocol, handler: @escaping ESRefreshHandler) -> ESRefreshFooterView {
-        self.es.addInfiniteScrolling(animator: animator, handler: handler)
+    func addInfiniteScrolling(animatorType: ESRefreshAnimatorType, handler: @escaping ESRefreshHandler) -> ESRefreshFooterView {
+        self.refreshAnimatorType = animatorType
+        return self.es.addInfiniteScrolling(animator: self.footAnimator, handler: handler)
     }
-
+    
 }

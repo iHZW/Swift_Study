@@ -10,22 +10,47 @@ import UIKit
 
 class SimpleWFTableViewController: WFTableViewController {
 
+    var defaultArray: NSMutableArray = NSMutableArray.init()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         for index in 0...19 {
             let temp: String = "我是: \(index)号"
             self.dataArray.add(temp)
+            self.defaultArray.add(temp)
         }
         self.numberSections = 1
         self.cellHeight = 80
         self.view.backgroundColor = UIColor.white
         
+        self.tableView.addPullToRefresh(animatorType: ESRefreshAnimatorType.meituan) {
+            WFLog("下拉刷新")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                self.defaultArray = NSMutableArray.init(array: self.defaultArray)
+                self.tableView.es.stopPullToRefresh()
+                self.tableView.reloadData()
+            }
+        }
+        
+        self.tableView.addInfiniteScrolling(animatorType: ESRefreshAnimatorType.wechat) {
+            WFLog("上拉加载")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                for index in 0...9 {
+                    let temp: String = "我是: \(index)号"
+                    self.dataArray.add(temp)
+                }
+                self.tableView.es.stopLoadingMore()
+                self.tableView.reloadData()
+            }
+        }
+        
         self.tableView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-(kPORTRAIT_SAFE_AREA_BOTTOM_SPACE + kMainTabBarHeight))
         }
-
+        
         if (self.cellConfigBlock != nil) {
             self.cellConfigBlock = {
                 (tableView, indexPatch, cell) in

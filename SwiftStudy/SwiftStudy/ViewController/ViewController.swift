@@ -10,12 +10,7 @@ import UIKit
 import Alamofire
 import ESPullToRefresh
 
-public enum ESRefreshAnimatorType: String {
-    case defaultTyoe = "DefaultType"
-    case meituan = "MeiTuanType"
-    case wechat = "WeChat"
-    case day = "Day"
-}
+
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
