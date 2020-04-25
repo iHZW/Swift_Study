@@ -61,13 +61,17 @@ class SimpleWFTableViewController: WFTableViewController {
 
         
         if (self.cellClickBlock != nil) {
-            self.cellClickBlock = {
-                (tableView, indexPatch, cell) in
-                
-                WFLog("tableView = \(tableView)\n indexPatch = \(indexPatch.row)")
-            }
-            
+//            self.cellClickBlock = {
+//                (tableView, indexPatch, cell) in
+//
+//                WFLog("tableView = \(tableView)\n indexPatch = \(indexPatch.row)")
+//            }
         }
+        
+        self.tempCellClick { (tableView, indexPatch, cell) in
+            WFLog("tableView = \(tableView)\n indexPatch = \(indexPatch.row)")
+        }
+        
         
         // Do any additional setup after loading the view.
     }

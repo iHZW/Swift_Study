@@ -25,11 +25,17 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     var cellConfigBlock: CellConfigBlock? = {
         (tableVie: UITableView, indexPath: IndexPath, cell: Any?) -> Void in
     }
+
     
     //设置cell点击事件
     typealias CellClickBlock = (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> Void
-    var cellClickBlock: CellClickBlock? = {
+    var cellClickBlock: CellClickBlock! = {
         (tableVie: UITableView, indexPath: IndexPath, cell: Any?) in
+    }
+    
+    func tempCellClick(handle: @escaping CellClickBlock) {
+        
+        WFLog("-==-==-======")
     }
 
     lazy var tableView: WFBaseTableView! = {
@@ -107,7 +113,8 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cellClickBlock!(tableView, indexPath, cell)
+        cellClickBlock(tableView, indexPath, cell)
+        self.tempCellClick(handle: self.cellClickBlock)
     }
     
 
@@ -127,7 +134,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

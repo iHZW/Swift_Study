@@ -49,3 +49,10 @@ public func WFCreateImageView(rect: CGRect, imageName: String) -> UIImageView {
     }
     return imageView
 }
+
+
+public func WFCreateView(rect: CGRect, bgColor: UIColor) -> UIView {
+    let view = UIView.init(frame: rect)
+    view.backgroundColor = bgColor
+    return view
+}

@@ -18,7 +18,7 @@ private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/l
 class ViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     private var dataArray : [HomeCellItem] = []
-    private var tempCount: Int = 1
+    
     //网格视图
     var mainCollectionView : UICollectionView!
     var request_nt: String = ""
@@ -58,34 +58,52 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     }
     
     func createNavgationUI() {
-        let rightBtn = WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "加载更多", titleColor: .red, selector: #selector(requestNext), event: .touchUpInside)
+        let rightBtn = WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "", titleColor: .red, selector: #selector(requestNext), event: .touchUpInside)
+        rightBtn.setImage(UIImage.init(named: "loading_refresh"), for: .normal)
+        rightBtn.contentHorizontalAlignment = .right
         let rightItem = UIBarButtonItem.init(customView: rightBtn)
         //下边设置是无效的,直接设置navigationItem即可
 //        self.navigationController?.navigationItem.rightBarButtonItem = rightItem
         self.navigationItem.rightBarButtonItem = rightItem
 
         
-        
-        let leftBtn =  WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "刷新当期页", titleColor: .blue, selector: #selector(refreshHome), event: .touchUpInside)
+        let leftBtn =  WFCreateButton(target: self, rect: CGRect.init(x: 0, y: 0, width: 80, height: 40), title: "", titleColor: .blue, selector: #selector(refreshHome), event: .touchUpInside)
+        leftBtn.setImage(UIImage.init(named: "left_drawer_open"), for: .normal)
+        leftBtn.contentHorizontalAlignment = .left
         let leftItem = UIBarButtonItem.init(customView: leftBtn)
         self.navigationItem.leftBarButtonItem = leftItem
     }
     
-    //刷新首页
+    //抽屉
     @objc func refreshHome() {
-//        self.request_nt = ""
 //        self.testRequest()
-//        tempCount += 1
-//        WFLog("refreshTempCount = \(tempCount)")
-        self.present(ViewDetailPage(), animated: true, completion: nil)
+        
     }
     
     //加载下一页数据
-    @objc func requestNext() {
-        self.testRequest()
+    @objc func requestNext(sender: UIButton) {
+//        self.request_nt = ""
+//        self.testRequest()
+        //开启动画
+        self.startAnimation(sender: sender)
+        //下拉刷新
+        self.mainCollectionView.es.startPullToRefresh()
+    }
+    
+    func startAnimation(sender: UIButton) {
+        // 创建动画
+        let animation = CABasicAnimation()
+        // 设置动画的keyPath
+        animation.keyPath = "transform.rotation"
+        //目标值
+        animation.toValue = Double.pi * 2
+        //动画时长
+        animation.duration = 1
         
-        tempCount -= 1
-        WFLog("moreTempCount = \(tempCount)")
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .backwards
+        //添加动画到layer层
+        sender.imageView?.layer.add(animation, forKey: nil)
     }
     
 
@@ -132,6 +150,8 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                 self.testRequest()
             }
         })
+        
+//        self.mainCollectionView.es.
         
         self.mainCollectionView.es.addInfiniteScrolling(animator: self.footAnimator, handler: {
             self.testRequest()

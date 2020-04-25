@@ -19,7 +19,7 @@ class ViewDetailPage: BaseViewController {
         
         let nextBtn = createBtn(rect: CGRect.init(x: 20, y: 100, width: kMainScreenWidth - 20*2, height: 100), title: "跳转到第三页根控制器", titleColor: UIColor.blue, selector: #selector(nextAction))
             
-        let tempBtn = WFCreateButton(target: self, rect: CGRect.init(x: 20, y: 250, width: kMainScreenWidth - 20*2, height: 100), title: "工厂方式创建的Button", titleColor: UIColor.red, selector: #selector(wfAction), event: UIControl.Event.touchUpInside)
+        let tempBtn = WFCreateButton(target: self, rect: CGRect.init(x: 20, y: 250, width: kMainScreenWidth - 20*2, height: 100), title: "登录", titleColor: UIColor.red, selector: #selector(wfAction), event: UIControl.Event.touchUpInside)
         let popBtn = createBtn(rect: CGRect.init(x: 20, y: 400, width: kMainScreenWidth - 20*2, height: 100), title: "返回", titleColor: UIColor.blue, selector: #selector(popAction))
 
         self.view.addSubview(nextBtn)
@@ -39,19 +39,19 @@ class ViewDetailPage: BaseViewController {
     }
     //测试数组排序
     let names = ["A", "BB", "AC", "ABC", "B", "C", "AA"]
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //测试数组排序
-        let reversed = names.sorted(by: backwards(s1:s2:))
-        WFLog("names = \(names) \n reversed = \(reversed)")
-        
-        
-        let tempVC = UIViewController.current()
-        let tempNav = kCurrentNavigationController()
-        
-        tempNav.tabBarController?.selectedIndex = 3
-        
-        self.dismiss(animated: true, completion: nil)
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        //测试数组排序
+//        let reversed = names.sorted(by: backwards(s1:s2:))
+//        WFLog("names = \(names) \n reversed = \(reversed)")
+//
+//
+//        let tempVC = UIViewController.current()
+//        let tempNav = kCurrentNavigationController()
+//
+//        tempNav.tabBarController?.selectedIndex = 3
+//
+//        self.dismiss(animated: true, completion: nil)
+//    }
     //降序排列
     func backwards (s1: String, s2: String) -> Bool{
         return s1 > s2 ? true : false
@@ -85,16 +85,31 @@ class ViewDetailPage: BaseViewController {
 //            currentNav?.tabBarController?.selectedIndex = 2
             let currentVC = UIViewController.current()
 //            currentVC.navigationController?.tabBarController?.selectedIndex = 2
-            kCurrentNavigationController().tabBarController?.selectedIndex = 2
+            let currentNav = kCurrentNavigationController()
+            if currentNav.isKind(of: BaseNavigationController.self) {
+                currentNav.tabBarController?.selectedIndex = 2
+            }else{
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
     @objc func popAction() {
-        self.navigationController?.popViewController(animated: true)
+        let currentNav = kCurrentNavigationController()
+        if currentNav.isKind(of: BaseNavigationController.self) {
+            currentNav.popViewController(animated: true)
+        }else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func wfAction(button: UIButton) {
         WFLog("点击了: \(String(describing: button.titleLabel?.text))")
+        
+        // MARK: - 默认全屏
+        let loginCtrl = LoginViewController()
+        loginCtrl.modalPresentationStyle = .overFullScreen
+        self.present(loginCtrl, animated: true, completion: nil)
     }
     
     
