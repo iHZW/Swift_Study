@@ -3,6 +3,7 @@ PODS:
   - ESPullToRefresh (2.9)
   - FLAnimatedImage (1.0.12)
   - HandyJSON (5.0.0)
+  - MCToast (0.0.5)
   - SDWebImage (5.1.0):
     - SDWebImage/Core (= 5.1.0)
   - SDWebImage/Core (5.1.0)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - ESPullToRefresh
   - FLAnimatedImage
   - HandyJSON
+  - MCToast
   - SDWebImage
   - SnapKit
 
@@ -22,6 +24,7 @@ SPEC REPOS:
     - ESPullToRefresh
     - FLAnimatedImage
     - HandyJSON
+    - MCToast
     - SDWebImage
     - SnapKit
 
@@ -30,9 +33,10 @@ SPEC CHECKSUMS:
   ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  MCToast: ed682abca850199076fd05b4487595e27cfa1eb0
   SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 83c96264e662b1f6d0e67500d5dd38c292649991
+PODFILE CHECKSUM: 4092eabbfc810ec71caad52596a471b22e7912b5
 
 COCOAPODS: 1.9.1
