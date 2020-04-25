@@ -46,6 +46,7 @@
 		7CB0C34D24508A540060F38C /* WFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34C24508A540060F38C /* WFTableViewController.swift */; };
 		7CB0C34F245093960060F38C /* WFBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C34E245093960060F38C /* WFBaseTableView.swift */; };
 		7CB0C3512450A8430060F38C /* SimpleWFTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */; };
+		7CB0C3542453D8970060F38C /* HawaiiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB0C3532453D8970060F38C /* HawaiiViewController.swift */; };
 		F4AD3D6D187A33F7D48F6479 /* Pods_SwiftStudy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		7CB0C34C24508A540060F38C /* WFTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFTableViewController.swift; sourceTree = "<group>"; };
 		7CB0C34E245093960060F38C /* WFBaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WFBaseTableView.swift; sourceTree = "<group>"; };
 		7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleWFTableViewController.swift; sourceTree = "<group>"; };
+		7CB0C3532453D8970060F38C /* HawaiiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HawaiiViewController.swift; sourceTree = "<group>"; };
 		C590DF9111579CB68F8B8FFD /* Pods-SwiftStudy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.release.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.release.xcconfig"; sourceTree = "<group>"; };
 		FADC8EDB3850A28DDDF4CAA7 /* Pods-SwiftStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftStudy.debug.xcconfig"; path = "Target Support Files/Pods-SwiftStudy/Pods-SwiftStudy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -251,6 +253,7 @@
 				7C81CE82243E150400C1A60E /* SecondViewController.swift */,
 				7CB0C34A244F2B180060F38C /* LoginViewController.swift */,
 				7CB0C3502450A8430060F38C /* SimpleWFTableViewController.swift */,
+				7CB0C3532453D8970060F38C /* HawaiiViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				7CA333FE2441A64E00AFE87C /* HomeListModel.swift in Sources */,
 				7C81CEA5244097C700C1A60E /* CheckString.swift in Sources */,
 				7C81CE94243E1D8800C1A60E /* BaseNavigationController.swift in Sources */,
+				7CB0C3542453D8970060F38C /* HawaiiViewController.swift in Sources */,
 				7CB0C343244DED400060F38C /* CenterSegmentView.swift in Sources */,
 				7C81CE89243E150400C1A60E /* SecondViewController.swift in Sources */,
 				7CA3365D24474D2B00AFE87C /* BaseWebViewController.swift in Sources */,

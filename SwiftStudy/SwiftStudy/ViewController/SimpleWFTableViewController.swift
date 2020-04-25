@@ -53,23 +53,19 @@ class SimpleWFTableViewController: WFTableViewController {
         
         if (self.cellConfigBlock != nil) {
             self.cellConfigBlock = {
-                (tableView, indexPatch, cell) in
+                (tableView, IndexPath, cell) in
                 let tempCell = (cell as! UITableViewCell)
-                tempCell.textLabel?.text = self.dataArray.object(at: indexPatch.row) as? String
+                tempCell.textLabel?.text = self.dataArray.object(at: IndexPath.row) as? String
             }
         }
 
         
         if (self.cellClickBlock != nil) {
-//            self.cellClickBlock = {
-//                (tableView, indexPatch, cell) in
-//
-//                WFLog("tableView = \(tableView)\n indexPatch = \(indexPatch.row)")
-//            }
-        }
-        
-        self.tempCellClick { (tableView, indexPatch, cell) in
-            WFLog("tableView = \(tableView)\n indexPatch = \(indexPatch.row)")
+            self.cellClickBlock = {
+                (tableView, IndexPath, cell) in
+                
+                WFLog("tableView = \(tableView)\n indexPatch = \(IndexPath.row)")
+            }
         }
         
         

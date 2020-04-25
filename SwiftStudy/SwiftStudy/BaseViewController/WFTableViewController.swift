@@ -17,27 +17,41 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
 
     var style: UITableView.Style? = .plain
     
-    var cellCalss: AnyClass? = UITableViewCell.classForCoder()
+    var heightForHeader: CGFloat = 0
     
+    // 学习使用
+    func tempCellClass<T: UITableViewCell>(_ aClass: T.Type) {
+        WFLog("class = \(aClass)")
+        self.cellClass = aClass
+    }
+    
+    var _cellClass: AnyClass!
+    var cellClass: AnyClass! {
+        set{
+            _cellClass = newValue
+            // MARK: -- 防止 cellCalss 在iewDidLoad()之后设置, 导致crash
+            self.tableView.register(cellClass, forCellReuseIdentifier: pasDefaultCellIdentifier)
+        }get{
+            if _cellClass == nil {
+                _cellClass = UITableViewCell.classForCoder()
+            }
+            return _cellClass
+        }
+    }
+        
     var cellHeight: CGFloat! = 50
     //设置cell内容
     typealias CellConfigBlock = (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> Void
     var cellConfigBlock: CellConfigBlock? = {
         (tableVie: UITableView, indexPath: IndexPath, cell: Any?) -> Void in
     }
-
     
     //设置cell点击事件
-    typealias CellClickBlock = (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> Void
+    typealias CellClickBlock = ((_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> (Void))
     var cellClickBlock: CellClickBlock! = {
-        (tableVie: UITableView, indexPath: IndexPath, cell: Any?) in
+        (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) in
     }
     
-    func tempCellClick(handle: @escaping CellClickBlock) {
-        
-        WFLog("-==-==-======")
-    }
-
     lazy var tableView: WFBaseTableView! = {
         let tempView = WFBaseTableView.init(frame: self.view.bounds, style: self.style!)
         tempView.delegate = self
@@ -49,7 +63,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         tempView.backgroundColor = UIColor.clear
         tempView.showsVerticalScrollIndicator = false
-        tempView.register(self.cellCalss!, forCellReuseIdentifier: pasDefaultCellIdentifier)
+        tempView.register(self.cellClass, forCellReuseIdentifier: pasDefaultCellIdentifier)
         return tempView
     }()
     
@@ -105,7 +119,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: pasDefaultCellIdentifier, for: indexPath)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
+        //加载子类cell的内容
         cellConfigBlock!(tableView, indexPath, cell)
         
         return cell
@@ -113,10 +127,34 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
+            
         cellClickBlock(tableView, indexPath, cell)
-        self.tempCellClick(handle: self.cellClickBlock)
+        
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = WFCreateView(rect: CGRect.zero, bgColor: .blue)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        var height: CGFloat = 0
+        if self.style == UITableView.Style.grouped {
+            height = 0.01
+        }
+        if section > 0 {
+            height = heightForHeader
+        }
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        var height: CGFloat = 0
+        if self.style == UITableView.Style.grouped {
+            height = 0.01
+        }
+        return height
+    }
 
     /*
     // Override to support conditional editing of the table view.

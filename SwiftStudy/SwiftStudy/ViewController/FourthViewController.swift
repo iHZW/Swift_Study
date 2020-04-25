@@ -25,7 +25,7 @@ class FourthViewController: BaseViewController {
     
     lazy var segmentView: CenterSegmentView = {
         let vc1 = SimpleWFTableViewController()
-        let vc2 = SimpleWFTableViewController()
+        let vc2 = HawaiiViewController()
         let vc3 = SimpleWFTableViewController()
         let vc4 = ViewDetailPage()
         let vc5 = FifthViewController()
