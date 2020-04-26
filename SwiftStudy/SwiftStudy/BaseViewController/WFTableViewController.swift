@@ -53,7 +53,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
     
     lazy var tableView: WFBaseTableView! = {
-        let tempView = WFBaseTableView.init(frame: self.view.bounds, style: self.style!)
+        let tempView = WFBaseTableView.init(frame: CGRect.zero, style: self.style!)
         tempView.delegate = self
         tempView.dataSource = self
         //ios11默认开启 Self-Sizing

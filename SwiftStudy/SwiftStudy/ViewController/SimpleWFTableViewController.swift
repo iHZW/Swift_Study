@@ -22,7 +22,6 @@ class SimpleWFTableViewController: WFTableViewController {
         }
         self.numberSections = 1
         self.cellHeight = 80
-        self.view.backgroundColor = UIColor.white
         
         self.tableView.addPullToRefresh(animatorType: ESRefreshAnimatorType.meituan) {
             WFLog("下拉刷新")
@@ -44,11 +43,6 @@ class SimpleWFTableViewController: WFTableViewController {
                 self.tableView.es.stopLoadingMore()
                 self.tableView.reloadData()
             }
-        }
-        
-        self.tableView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-(kPORTRAIT_SAFE_AREA_BOTTOM_SPACE + kMainTabBarHeight))
         }
         
         if (self.cellConfigBlock != nil) {

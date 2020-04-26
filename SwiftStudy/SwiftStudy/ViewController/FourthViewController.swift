@@ -19,7 +19,6 @@ class FourthViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.view.addSubview(self.segmentView)
     }
     
@@ -33,8 +32,10 @@ class FourthViewController: BaseViewController {
         let vc7 = SimpleWFTableViewController()
 
         let controllers = [vc1, vc2, vc3, vc4, vc5, vc6, vc7]
-        
-        let segmentView = CenterSegmentView.init(frame: CGRect.init(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaTopStatusNavBarHeight - kMainTabBarHeight), normalFont: PASFont(fontSize: 15), selectFont: PASFont(fontSize: 18), normalColor: HexColor(hex: 0x111111), selectColor: HexColor(hex: 0xE2233E), controllers: controllers, titleArray: self.titleArray, selectIndex: 0)
+
+        let origin_Y: CGFloat = kSafeAreaTopStatusNavBarHeight
+        let segmentHeight = (kMainSCreenHeight - origin_Y - kMainTabBarHeight - kPORTRAIT_SAFE_AREA_BOTTOM_SPACE)
+        let segmentView = CenterSegmentView.init(frame: CGRect.init(x: 0, y: origin_Y, width: kMainScreenWidth, height: segmentHeight), normalFont: PASFont(fontSize: 15), selectFont: PASFont(fontSize: 18), normalColor: HexColor(hex: 0x111111), selectColor: HexColor(hex: 0xE2233E), controllers: controllers, titleArray: self.titleArray, selectIndex: 0)
         
         //闭包回调
         if (segmentView.pageBlock != nil) {

@@ -142,7 +142,7 @@ class CenterSegmentView: UIView{
         
         for (index,controller) in controllers.enumerated(){
             self.segmentScrollV.addSubview(controller.view)
-            controller.view.frame = CGRect(x: CGFloat(index) * frame.size.width, y: 0, width: frame.size.width, height: frame.size.height)
+            controller.view.frame = CGRect(x: CGFloat(index) * frame.size.width, y: 0, width: frame.size.width, height: frame.size.height - self.segmentScrollVHeight)
 //            parentController.addChildViewController(controller)
 //            controller.didMove(toParentViewController: parentController)
         }
