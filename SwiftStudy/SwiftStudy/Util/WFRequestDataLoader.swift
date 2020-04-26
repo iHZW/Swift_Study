@@ -41,6 +41,8 @@ class WFRequestDataLoader: NSObject {
                 success(ajax)
             }
         })
+        
+        Alamofire.request(url, method: method)
     }
     
 }

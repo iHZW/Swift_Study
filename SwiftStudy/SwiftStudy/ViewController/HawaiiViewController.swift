@@ -40,19 +40,30 @@ class HawaiiViewController: WFTableViewController {
             return tempArray
         }()
         
-        self.tableView.reloadData()
-        
-        if (self.cellConfigBlock != nil) {
-            self.cellConfigBlock = {
+                
+//        if (self.cellConfigBlock != nil) {
+            self.cellConfigBlock = { [weak self]
                 (tableView, indexPath, cell) in
                 let tempCell = (cell as! WFCommonCell)
-                let sectionArray = self.dataArray.object(at: indexPath.section) as! NSMutableArray
+                let sectionArray = self?.dataArray.object(at: indexPath.section) as! NSMutableArray
                 let infoModel = sectionArray.object(at: indexPath.row) as! WFListInfoModel
                 tempCell.cellInfoModel(infoModel: infoModel)
             }
+//        }
+        self.cellClickBlock = {
+            (tableView, indexPath, cell) in
+            let Ctrl = HawaiiViewController()
+            kCurrentNavigationController().pushViewController(Ctrl, animated: true)
         }
+        
+        
+        self.tableView.reloadData()
+                
     }
     
+    deinit {
+        WFLog("Hawaii : deadLine")
+    }
 
     /*
     // MARK: - Navigation

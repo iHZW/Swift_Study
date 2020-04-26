@@ -145,16 +145,18 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
 
         
         self.mainCollectionView.es.addPullToRefresh(animator: self.headerAnimator, handler: {
+            [weak self] in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.request_nt = ""
-                self.testRequest()
+                self?.request_nt = ""
+                self?.testRequest()
             }
         })
         
 //        self.mainCollectionView.es.
         
         self.mainCollectionView.es.addInfiniteScrolling(animator: self.footAnimator, handler: {
-            self.testRequest()
+            [weak self] in
+            self?.testRequest()
         })
 
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class CenterSegmentView: UIView{
     
@@ -14,7 +15,7 @@ class CenterSegmentView: UIView{
     var nameArray:[String] = []
     
     /// 标题按钮高度
-    var segmentScrollVHeight:CGFloat = 41
+    var segmentScrollVHeight:CGFloat = 45
     
     /// 标题正常颜色
     var titleNormalColor:UIColor = UIColor.gray
@@ -48,6 +49,8 @@ class CenterSegmentView: UIView{
 
     /// 显示item的宽度
     var itemWidth: CGFloat!
+    /// 是否根据frame的宽度均分,并且流出宽度一半的间距
+    var isAccordingFive: Bool = false
     
     /// huidiao
     typealias PageBlock = (_ selectIndex:Int)->Void
@@ -94,25 +97,41 @@ class CenterSegmentView: UIView{
     var controllers:[UIViewController] = []
     
     
-    convenience init(frame: CGRect,controllers:[UIViewController],titleArray:[String],selectIndex:Int,lineHeight:CGFloat) {
-        self.init(frame: frame)
-        self.controllers = controllers
-        self.nameArray = titleArray
-        self.lineHeight = lineHeight
-        self.selectedIndex = selectIndex
-        self.initData()
-    }
-    
-    convenience init(frame: CGRect, normalFont: UIFont, selectFont:UIFont, normalColor: UIColor, selectColor: UIColor, controllers: [UIViewController], titleArray: [String], selectIndex: Int) {
+    public typealias SegmentHandler = (() -> ())
+    var handler: SegmentHandler?
+     
+    convenience init(
+        frame: CGRect = CGRect.init(x: 0, y: 0, width: kMainScreenWidth, height: kMainSCreenHeight),
+        controllers: [UIViewController],
+        titleArray: [String],
+        selectIndex: Int = 0,
+        lineHeight: CGFloat = 1,
+        segmentScrollVHeight: CGFloat = 45,
+        normalFont: UIFont = PASFont(fontSize: 15),
+        normalColor: UIColor = HexColor(hex: 0x111111),
+        selectFont:UIFont = PASFont(fontSize: 18),
+        selectColor: UIColor = HexColor(hex: 0xE2233E),
+        lineSelectedColor: UIColor = HexColor(hex: 0xE2233E),
+        downColor: UIColor = HexColor(hex: 0xEDEDED),
+        lineWidth: CGFloat = 25,
+        itemWidth: CGFloat = 80,
+        isAccordingFive: Bool = false)
+    {
         self.init(frame: frame)
         self.selectFont = selectFont
         self.normalFont = normalFont
         self.titleNormalColor = normalColor
         self.titleSelectColor = selectColor
-        self.lineSelectedColor = selectColor
+        self.lineSelectedColor = lineSelectedColor
+        self.downColor = downColor
         self.controllers = controllers
         self.nameArray = titleArray
         self.selectedIndex = selectIndex
+        self.lineHeight = lineHeight
+        self.lineWidth = lineWidth
+        self.segmentScrollVHeight = segmentScrollVHeight
+        self.itemWidth = itemWidth
+        self.isAccordingFive = isAccordingFive
         self.initData()
     }
     
@@ -121,14 +140,21 @@ class CenterSegmentView: UIView{
             return
         }
         //宽度
-        self.itemWidth = frame.size.width / CGFloat(controllers.count)
-        if controllers.count > 5 {
-            self.itemWidth = (frame.size.width - 30) / 5
+        if self.isAccordingFive == true {
+            self.itemWidth = frame.size.width / CGFloat(controllers.count)
+            if controllers.count > 5 {
+                self.itemWidth = frame.size.width / 5.5
+            }
         }
-        
-        self.segmentView.frame = CGRect(x: 0, y: 0, width:frame.size.width, height: segmentScrollVHeight)
+
+//        self.segmentView.frame = CGRect.zero
         self.segmentView.tag = 50
         self.addSubview(self.segmentView)
+        
+        self.segmentView.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(self.segmentScrollVHeight)
+        }
         
         self.segmentScrollV.frame = CGRect(x: 0, y: self.segmentScrollVHeight, width: frame.size.width, height: frame.size.height - self.segmentScrollVHeight)
         self.segmentScrollV.contentSize = CGSize(width: frame.size.width * CGFloat(controllers.count), height: 0)
@@ -139,6 +165,11 @@ class CenterSegmentView: UIView{
         self.segmentScrollV.bounces = false
         
         self.addSubview(self.segmentScrollV)
+        
+        self.segmentScrollV.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(self.segmentView.snp.bottom)
+        }
         
         for (index,controller) in controllers.enumerated(){
             self.segmentScrollV.addSubview(controller.view)
@@ -174,7 +205,7 @@ class CenterSegmentView: UIView{
         }
         
         //分割线
-        let downFrame = CGRect(x: 0, y: 40, width: self.itemWidth * CGFloat(controllers.count), height: 0.5)
+        let downFrame = CGRect(x: 0, y: self.segmentScrollVHeight - 1, width: self.itemWidth * CGFloat(controllers.count), height: 0.5)
         self.down = UILabel(frame: downFrame)
         self.down.backgroundColor = self.downColor
         self.segmentView.addSubview(self.down)

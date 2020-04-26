@@ -175,6 +175,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     
+    deinit {
+        WFLog("LoginCtrl deadLine")
+    }
     
     
     /*

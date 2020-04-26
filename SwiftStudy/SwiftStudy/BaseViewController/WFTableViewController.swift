@@ -42,16 +42,12 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     var cellHeight: CGFloat! = 50
     //设置cell内容
     typealias CellConfigBlock = (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> Void
-    var cellConfigBlock: CellConfigBlock? = {
-        (tableVie: UITableView, indexPath: IndexPath, cell: Any?) -> Void in
-    }
+    var cellConfigBlock: CellConfigBlock?
     
     //设置cell点击事件
     typealias CellClickBlock = ((_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) -> (Void))
-    var cellClickBlock: CellClickBlock! = {
-        (_ tableVie: UITableView, _ indexPath: IndexPath, _ cell: Any?) in
-    }
-    
+    var cellClickBlock: CellClickBlock?
+        
     lazy var tableView: WFBaseTableView! = {
         let tempView = WFBaseTableView.init(frame: CGRect.zero, style: self.style!)
         tempView.delegate = self
@@ -120,7 +116,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: pasDefaultCellIdentifier, for: indexPath)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         //加载子类cell的内容
-        cellConfigBlock!(tableView, indexPath, cell)
+        cellConfigBlock?(tableView, indexPath, cell)
         
         return cell
     }
@@ -128,8 +124,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
             
-        cellClickBlock(tableView, indexPath, cell)
-        
+        cellClickBlock?(tableView, indexPath, cell)        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
