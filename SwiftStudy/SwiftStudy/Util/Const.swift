@@ -68,6 +68,22 @@ func WFLog<T>(_ message: T,
     #endif
 }
 
+// MARK: -- 计算两值之和 包括string类型
+protocol WFAddable {
+    static func +(a: Self, b: Self) -> Self
+}
+
+func WFAdd<T: WFAddable>(num1: T, _ num2:T) -> T {
+    return num1 + num2
+}
+
+extension Int: WFAddable {}
+extension Double: WFAddable {}
+extension Float: WFAddable {}
+extension String: WFAddable {}
+
+
+
 class Const: NSObject {
  
 }

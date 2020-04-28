@@ -20,20 +20,43 @@ class ViewDetailPage: BaseViewController {
         let nextBtn = createBtn(rect: CGRect.init(x: 20, y: 100, width: kMainScreenWidth - 20*2, height: 100), title: "跳转到第三页根控制器", titleColor: UIColor.blue, selector: #selector(nextAction))
             
         let tempBtn = WFCreateButton(target: self, rect: CGRect.init(x: 20, y: 250, width: kMainScreenWidth - 20*2, height: 100), title: "登录", titleColor: UIColor.red, selector: #selector(wfAction), event: UIControl.Event.touchUpInside)
+        tempBtn.layer.cornerRadius = 4
+        tempBtn.backgroundColor = HexColor(hex: 0xEDEDED)
+        
         let popBtn = createBtn(rect: CGRect.init(x: 20, y: 400, width: kMainScreenWidth - 20*2, height: 100), title: "返回", titleColor: UIColor.blue, selector: #selector(popAction))
 
         self.view.addSubview(nextBtn)
         self.view.addSubview(popBtn)
         self.view.addSubview(tempBtn)
         
+        let viewHeight = 60
+        let leftSpace = 30
+        
+        nextBtn.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(leftSpace)
+            make.top.equalToSuperview().offset(80)
+            make.right.equalToSuperview().offset(-leftSpace)
+            make.height.equalTo(viewHeight)
+        }
+        
+        tempBtn.snp.makeConstraints { (make) in
+            make.left.right.height.equalTo(nextBtn)
+            make.top.equalTo(nextBtn.snp.bottom).offset(20)
+        }
+        
+        popBtn.snp.makeConstraints { (make) in
+            make.left.height.right.equalTo(nextBtn)
+            make.top.equalTo(tempBtn.snp.bottom).offset(20)
+        }
+        
         self.transLabel = WFCreateLabel(rect: CGRect.zero, title: self.transName ?? "Hello Word", titleColor: UIColor.blue, alignment: .center, font: .systemFont(ofSize: 20))
         self.view.addSubview(self.transLabel!)
         
         self.transLabel?.snp.makeConstraints({ (make) in
+            make.top.equalTo(popBtn.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize.init(width: 100, height: 100))
-            make.bottom.equalToSuperview().offset(-150)
         })
         
     }
@@ -53,7 +76,7 @@ class ViewDetailPage: BaseViewController {
 //        self.dismiss(animated: true, completion: nil)
 //    }
     //降序排列
-    func backwards (s1: String, s2: String) -> Bool{
+    func backwards(s1: String, s2: String) -> Bool{
         return s1 > s2 ? true : false
     }
 
@@ -101,6 +124,9 @@ class ViewDetailPage: BaseViewController {
         }else{
             self.dismiss(animated: true, completion: nil)
         }
+        
+       let c = WFAdd(num1: 1, 2)
+        WFLog("c = \(c)")
     }
     
     @objc func wfAction(button: UIButton) {

@@ -124,7 +124,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
             
-        cellClickBlock?(tableView, indexPath, cell)        
+        cellClickBlock?(tableView, indexPath, cell)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
