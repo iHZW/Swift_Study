@@ -11,12 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         //如果需要启动页延迟几秒进去可以简单这样写
 //        UIApplication.shared.isNetworkActivityIndicatorVisible = true
 //        Thread.sleep(forTimeInterval: 1)
 //        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+      
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = MainTabBarController.sharedInstance
         return true
     }
 

@@ -68,12 +68,13 @@ func WFLog<T>(_ message: T,
     #endif
 }
 
-// MARK: -- 计算两值之和 包括string类型
+
+// MARK: -- 定义两值之和包括string类型
 protocol WFAddable {
-    static func +(a: Self, b: Self) -> Self
+    static func +(lhs: Self, rhs: Self) -> Self
 }
 
-func WFAdd<T: WFAddable>(num1: T, _ num2:T) -> T {
+func WFAdd<T: WFAddable>(num1: T, _ num2: T) -> T {
     return num1 + num2
 }
 
@@ -81,6 +82,20 @@ extension Int: WFAddable {}
 extension Double: WFAddable {}
 extension Float: WFAddable {}
 extension String: WFAddable {}
+
+
+// MARK: -- 两数之差
+protocol WFMinusable {
+    static func -(lhs: Self, rhs: Self) -> Self
+}
+
+func WFMinus<T: WFMinusable>(num1: T, _ num2: T) -> T {
+    return num1 - num2
+}
+
+extension Int: WFMinusable {}
+extension Double: WFMinusable {}
+extension Float: WFMinusable {}
 
 
 

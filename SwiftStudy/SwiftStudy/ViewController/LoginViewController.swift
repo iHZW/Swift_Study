@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MCToast
 
 private let kLogLeftSpace = 40
 private let kLeftViewWidth = 40
@@ -152,20 +153,29 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @objc func loginAction() {
         
         if self.countTextField.text?.validString() == true {
-            
+            MCToast.mc_failure("请输入账号")
         }else if self.pwdTextField.text?.validString() == true {
-            
+            MCToast.mc_other("请输入密码")
         }else{
             if (self.countTextField.text == self.countNo &&
                 self.pwdTextField.text == self.password) {
-                self.dismiss(animated: true, completion: nil)
-            }else{
                 
+                MCToast.mc_loading()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    MCToast.mc_success("登录成功")
+                    self.closePage()
+                }
+            }else{
+                MCToast.mc_text("密码不正确")
             }
         }
     }
     
     @objc func closePage() {
+        // 重新指定跟控制器
+        let rootVC = UIApplication.shared.delegate as! AppDelegate
+        MainTabBarController.sharedInstance.selectedIndex = 4
+        rootVC.window?.rootViewController = MainTabBarController.sharedInstance
         self.dismiss(animated: true, completion: nil)
     }
 

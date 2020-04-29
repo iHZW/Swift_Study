@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import ESPullToRefresh
-
+import MCToast
 
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
@@ -77,7 +77,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //抽屉
     @objc func refreshHome() {
 //        self.testRequest()
-        
+        MCToast.mc_failure("-09-09-00--09-0")
     }
     
     //加载下一页数据
@@ -270,7 +270,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         let parameters: [String : Any] = ["foo": [1,2,3], "bar": ["baz": "qux"]]
         WFRequestDataLoader.request(method: .post, url: url!, parameters: parameters) { (result) in
             if result.code == .success {
-                let datas = Array<HomeListModel>.deserialize(from: result.newsList as? NSArray) ?? []
+                let datas = Array<HomeListModel>.deserialize(from: result.newsList as NSArray?) ?? []
                 WFLog("datas = \(datas)")
             }
         }

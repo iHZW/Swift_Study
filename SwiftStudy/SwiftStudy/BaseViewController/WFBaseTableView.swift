@@ -57,20 +57,25 @@ class WFBaseTableView: UITableView {
         }
     }
     
+    @discardableResult
     func addPullToRefresh(handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
-        self.es.addPullToRefresh(handler: handler)
+        self.refreshAnimatorType = .defaultTyoe
+        return self.es.addPullToRefresh(animator: self.headerAnimator, handler: handler)
     }
     
+    @discardableResult
     func addPullToRefresh(animatorType: ESRefreshAnimatorType, handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
         self.refreshAnimatorType = animatorType
         return self.es.addPullToRefresh(animator: self.headerAnimator, handler: handler)
     }
     
-    
+    @discardableResult
     func addInfiniteScrolling(handler: @escaping ESRefreshHandler) -> ESRefreshFooterView{
-        self.es.addInfiniteScrolling(handler: handler)
+        self.refreshAnimatorType = .defaultTyoe
+        return self.es.addInfiniteScrolling(animator: self.footAnimator, handler: handler)
     }
     
+    @discardableResult
     func addInfiniteScrolling(animatorType: ESRefreshAnimatorType, handler: @escaping ESRefreshHandler) -> ESRefreshFooterView {
         self.refreshAnimatorType = animatorType
         return self.es.addInfiniteScrolling(animator: self.footAnimator, handler: handler)

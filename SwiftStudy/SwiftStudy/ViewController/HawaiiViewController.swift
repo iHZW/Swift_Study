@@ -41,24 +41,41 @@ class HawaiiViewController: WFTableViewController {
         }()
         
                 
-//        if (self.cellConfigBlock != nil) {
-            self.cellConfigBlock = { [weak self]
-                (tableView, indexPath, cell) in
-                let tempCell = (cell as! WFCommonCell)
-                let sectionArray = self?.dataArray.object(at: indexPath.section) as! NSMutableArray
-                let infoModel = sectionArray.object(at: indexPath.row) as! WFListInfoModel
-                tempCell.cellInfoModel(infoModel: infoModel)
-            }
-//        }
+        self.cellConfigBlock = { [weak self]
+            (tableView, indexPath, cell) in
+            let tempCell = (cell as! WFCommonCell)
+            let sectionArray = self?.dataArray.object(at: indexPath.section) as! NSMutableArray
+            let infoModel = sectionArray.object(at: indexPath.row) as! WFListInfoModel
+            tempCell.cellInfoModel(infoModel: infoModel)
+        }
+
         self.cellClickBlock = {
             (tableView, indexPath, cell) in
             let Ctrl = HawaiiViewController()
             kCurrentNavigationController().pushViewController(Ctrl, animated: true)
         }
-        
-        
+
         self.tableView.reloadData()
-                
+        
+
+        // MARK: -- 刷新代理
+        self.tableView.addPullToRefresh {
+            [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self?.tableView.es.stopPullToRefresh()
+                self?.tableView.reloadData()
+            }
+        }
+        
+        self.tableView.addInfiniteScrolling {
+            [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self?.tableView.es.noticeNoMoreData()
+                self?.tableView.reloadData()
+            }
+        }
+        
+        
     }
     
     deinit {

@@ -42,7 +42,6 @@ class SecondViewController: BaseViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         WFLog("点击了第\(indexPath.row)")
         self.navigationController?.pushViewController(ViewDetailPage(), animated: true)
-        let tempCtrl = UIViewController.current()
     }
 
     /*

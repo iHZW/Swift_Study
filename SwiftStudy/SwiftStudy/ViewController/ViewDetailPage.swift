@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MCToast
 
 class ViewDetailPage: BaseViewController {
 
+    var tempPrint = CanPrintBase<String>()
+    var currentIndex: Int = 0
     open var transName: String!
     private var transLabel: UILabel?
     override func viewDidLoad() {
@@ -20,8 +23,8 @@ class ViewDetailPage: BaseViewController {
         let nextBtn = createBtn(rect: CGRect.init(x: 20, y: 100, width: kMainScreenWidth - 20*2, height: 100), title: "跳转到第三页根控制器", titleColor: UIColor.blue, selector: #selector(nextAction))
             
         let tempBtn = WFCreateButton(target: self, rect: CGRect.init(x: 20, y: 250, width: kMainScreenWidth - 20*2, height: 100), title: "登录", titleColor: UIColor.red, selector: #selector(wfAction), event: UIControl.Event.touchUpInside)
-        tempBtn.layer.cornerRadius = 4
         tempBtn.backgroundColor = HexColor(hex: 0xEDEDED)
+        tempBtn.layer.cornerRadius = 4
         
         let popBtn = createBtn(rect: CGRect.init(x: 20, y: 400, width: kMainScreenWidth - 20*2, height: 100), title: "返回", titleColor: UIColor.blue, selector: #selector(popAction))
 
@@ -125,13 +128,32 @@ class ViewDetailPage: BaseViewController {
             self.dismiss(animated: true, completion: nil)
         }
         
-       let c = WFAdd(num1: 1, 2)
-        WFLog("c = \(c)")
+        var a = 1
+        var b = 2
+        self.swapTwoValues(a: &a, b: &b)
+        WFLog("a = \(a)\n b = \(b) ")
+        
+        let tempValue = WFAdd(num1: 6.3, 7)
+        let tempString = WFAdd(num1: "hello ", "word")
+        let tempValue2 = WFMinus(num1: 3, 9)
+//        let tempString2 = WFMinus(num1: "hello ", "word")
+
+        WFLog("tempValue = \(tempValue)\n tempString = \(tempString)\n tempValue2 = \(tempValue2) \n")
+        
+        
+        
+        self.tempPrint.pop()
+        WFLog("getCurrent = \(self.tempPrint.getCurrent() ?? "default")")
+        
+        MCToast.mc_failure("请输入账号")
+        
     }
     
     @objc func wfAction(button: UIButton) {
         WFLog("点击了: \(String(describing: button.titleLabel?.text))")
-        
+        self.currentIndex += 1
+        self.tempPrint.push(item: "\(self.currentIndex)")
+
         // MARK: - 默认全屏
         let loginCtrl = LoginViewController()
         loginCtrl.modalPresentationStyle = .overFullScreen
@@ -150,7 +172,14 @@ class ViewDetailPage: BaseViewController {
         }
         return nil
     }
-        
+    
+    // MARK: -- Swift 泛型使用
+    func swapTwoValues<T>(a: inout T, b: inout T){
+        let temppraryA = a
+        a = b
+        b = temppraryA
+    }
+    
     
     /*
     // MARK: - Navigation
@@ -162,4 +191,28 @@ class ViewDetailPage: BaseViewController {
     }
     */
 
+}
+
+
+
+/// 实现一个堆栈
+class CanPrintBase<T>: NSObject {
+    var list:[T] = []
+    
+    //入栈
+    func push(item: T){
+        list.append(item)
+    }
+    //出栈
+    func pop() {
+        if list.count > 0 {
+            list.removeLast()
+        }
+    }
+}
+
+extension CanPrintBase{
+    func getCurrent() -> T?{
+        return list.last
+    }
 }

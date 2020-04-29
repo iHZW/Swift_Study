@@ -46,14 +46,6 @@ class SimpleWFTableViewController: WFTableViewController {
             }
         }
         
-        self.tableView.es.addPullToRefresh { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self?.defaultArray = NSMutableArray.init(array: self!.defaultArray)
-                self?.tableView.es.stopPullToRefresh()
-                self?.tableView.reloadData()
-            }
-        }
-        
         self.tableView.addInfiniteScrolling(animatorType: ESRefreshAnimatorType.wechat) {
             [weak self] in
             WFLog("上拉加载")

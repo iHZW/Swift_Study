@@ -8,8 +8,33 @@
 
 import UIKit
 
+
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
+    //实现单利 methodOne
+    static let sharedInstance = MainTabBarController()
+
+    //实现单利 methodTwo
+    class var sharedInstanceTwo: MainTabBarController {
+        struct Static{
+            static let instance: MainTabBarController = MainTabBarController()
+        }
+        return Static.instance
+    }
+    
+    //实现单利 methodThree  dispatch_once_t 方法已经废弃
+//    class var sharedInstanceThree: MainTabBarController {
+//        struct Static{
+//            static var onceTken: dispatch_once_t  = 0
+//            static var instance: MainTabBarController? = nil
+//        }
+//
+//        dispatch_once(&Static.onceTken){
+//            Static.instance = MainTabBarController()
+//        }
+//        return Static.instance!
+//    }
+    
     private var navCtrlArray: NSMutableArray? = NSMutableArray.init()
     
     //MARK: --setter getter

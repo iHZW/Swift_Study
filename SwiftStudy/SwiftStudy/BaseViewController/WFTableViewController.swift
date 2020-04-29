@@ -103,7 +103,7 @@ class WFTableViewController: BaseViewController, UITableViewDelegate, UITableVie
        
         var number = dataArray.count
         if ((dataArray[section] as? NSArray) != nil) {
-            number = (dataArray[section] as? NSArray)?.count as! Int
+            number = (dataArray[section] as! NSArray).count
         }
         return number
     }
