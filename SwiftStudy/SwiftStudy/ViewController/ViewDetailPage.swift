@@ -137,7 +137,7 @@ class ViewDetailPage: BaseViewController {
         let tempString = WFAdd(num1: "hello ", "word")
         let tempValue2 = WFMinus(num1: 3, 9)
 //        let tempString2 = WFMinus(num1: "hello ", "word")
-
+  
         WFLog("tempValue = \(tempValue)\n tempString = \(tempString)\n tempValue2 = \(tempValue2) \n")
         
         
