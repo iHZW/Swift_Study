@@ -14,7 +14,8 @@ class ViewDetailPage: BaseViewController {
     var tempPrint = CanPrintBase<String>()
     var currentIndex: Int = 0
     open var transName: String!
-    private var transLabel: UILabel?
+    private var transLabel: UILabel!
+    private var mapBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -55,14 +56,33 @@ class ViewDetailPage: BaseViewController {
         self.transLabel = WFCreateLabel(rect: CGRect.zero, title: self.transName ?? "Hello Word", titleColor: UIColor.blue, alignment: .center, font: .systemFont(ofSize: 20))
         self.view.addSubview(self.transLabel!)
         
-        self.transLabel?.snp.makeConstraints({ (make) in
+        self.transLabel.snp.makeConstraints({ (make) in
             make.top.equalTo(popBtn.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(15)
             make.centerX.equalToSuperview()
             make.size.equalTo(CGSize.init(width: 100, height: 100))
         })
         
+        self.mapBtn = WFCreateButton(target: self, rect: .zero, title: "go to Map", titleColor: .black, selector: #selector(gotoMapView), event: .touchUpInside)
+        mapBtn.backgroundColor = .lightGray
+        self.view.addSubview(self.mapBtn)
+        
+        self.mapBtn.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(60)
+            make.right.equalToSuperview().offset(-60)
+            make.height.equalTo(60)
+            make.top.equalTo(self.transLabel.snp.bottom).offset(5)
+        }
+        
     }
+      
+    // MARK: -- 跳转到地图界面
+    @objc func gotoMapView() {
+      
+        let mapCtrl = TestMapViewController()
+        kCurrentNavigationController().pushViewController(mapCtrl, animated: true)
+    }
+    
     //测试数组排序
     let names = ["A", "BB", "AC", "ABC", "B", "C", "AA"]
 //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -109,7 +129,7 @@ class ViewDetailPage: BaseViewController {
         }else{
 //            let currentNav = self.currentNavViewController()
 //            currentNav?.tabBarController?.selectedIndex = 2
-            let currentVC = UIViewController.current()
+//            let currentVC = UIViewController.current()
 //            currentVC.navigationController?.tabBarController?.selectedIndex = 2
             let currentNav = kCurrentNavigationController()
             if currentNav.isKind(of: BaseNavigationController.self) {

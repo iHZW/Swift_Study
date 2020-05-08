@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C374A3B2464239F0071FD50 /* TestMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C374A3A2464239F0071FD50 /* TestMapViewController.swift */; };
+		7C374A3D246431FD0071FD50 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C374A3C246431FC0071FD50 /* Artwork.swift */; };
 		7C650CD7243CD62F00726BA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C650CD6243CD62F00726BA4 /* AppDelegate.swift */; };
 		7C650CD9243CD62F00726BA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C650CD8243CD62F00726BA4 /* SceneDelegate.swift */; };
 		7C650CE0243CD63100726BA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C650CDF243CD63100726BA4 /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		115838D90EDF717F28A10213 /* Pods_SwiftStudy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftStudy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C374A3A2464239F0071FD50 /* TestMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapViewController.swift; sourceTree = "<group>"; };
+		7C374A3C246431FC0071FD50 /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		7C650CD3243CD62F00726BA4 /* SwiftStudy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftStudy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C650CD6243CD62F00726BA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C650CD8243CD62F00726BA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 			children = (
 				7C81CEA62440987800C1A60E /* ViewController.swift */,
 				7C81CE8E243E1B4600C1A60E /* ViewDetailPage.swift */,
+				7C374A3C246431FC0071FD50 /* Artwork.swift */,
+				7C374A3A2464239F0071FD50 /* TestMapViewController.swift */,
 				7C81CE7F243E150400C1A60E /* ThirdViewController.swift */,
 				7C81CE80243E150400C1A60E /* FifthViewController.swift */,
 				7C81CE81243E150400C1A60E /* FourthViewController.swift */,
@@ -570,12 +576,14 @@
 				7CB0C3392449D4220060F38C /* MTRefreshHeaderAnimator.swift in Sources */,
 				7C81CE84243E150400C1A60E /* MainTabBarController.swift in Sources */,
 				7C81CE88243E150400C1A60E /* FourthViewController.swift in Sources */,
+				7C374A3B2464239F0071FD50 /* TestMapViewController.swift in Sources */,
 				7C81CE97243E1DB200C1A60E /* Const.swift in Sources */,
 				7C81CE8D243E178900C1A60E /* BaseViewController.swift in Sources */,
 				7CA3365B2445EEA200AFE87C /* DateFormatterFunc.swift in Sources */,
 				7C81CEA72440987800C1A60E /* ViewController.swift in Sources */,
 				7C81CE8F243E1B4600C1A60E /* ViewDetailPage.swift in Sources */,
 				7CB0C340244AAAEE0060F38C /* Student.swift in Sources */,
+				7C374A3D246431FD0071FD50 /* Artwork.swift in Sources */,
 				7CB0C3382449D4220060F38C /* MTRefreshFooterAnimator.swift in Sources */,
 				7C81CEA32440979800C1A60E /* HomeCollectionViewCell.swift in Sources */,
 				7C81CE9C243F419700C1A60E /* UIVIewCreate.swift in Sources */,

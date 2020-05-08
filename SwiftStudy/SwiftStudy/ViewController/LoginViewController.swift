@@ -167,9 +167,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UITableViewD
             make.top.equalTo(self.pwdLabel.snp.bottom).offset(kLogBetweenHeight)
             make.height.equalTo(50)
         })
-        
 
-    
         
         // Do any additional setup after loading the view.
     }
@@ -191,6 +189,23 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UITableViewD
     
     // 处理登录逻辑
     @objc func loginAction() {
+        
+        let numA: Int = 118 //0111 0110
+        let numB: Int = 85  //0101 0101
+        var numC: Int = 0
+        
+        numC = numA ^ numB
+        WFLog("numC3 = \(numC)") //0010 0011, 35
+        
+        numC = ~numA
+        WFLog("numC1 = \(numC)") //
+        
+        numC = numA << 2  //左移两位,即右侧直接补充两个0
+        WFLog("numC2 = \(numC)") //0001 1101 1000
+        
+        numC = numA >> 2 //右移两位, 即右侧直接去掉两位
+        WFLog("numC4 = \(numC)") // 0001 1101
+
         
         if self.countTextField.text?.validString() == true {
             MCToast.mc_failure("请输入账号")
