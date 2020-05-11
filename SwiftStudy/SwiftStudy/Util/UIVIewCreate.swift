@@ -56,3 +56,18 @@ public func WFCreateView(rect: CGRect, bgColor: UIColor) -> UIView {
     view.backgroundColor = bgColor
     return view
 }
+
+
+// MARK: -- 创建UITextField
+public func WFCreateTextField(rect: CGRect = CGRect.zero,
+                              placeholder: String? = "",
+                              borderStyle: UITextField.BorderStyle = .none,
+                              keyboardType: UIKeyboardType = .`default`,
+                              clearButtonMode: UITextField.ViewMode = .never) -> UITextField {
+    let textField = UITextField.init(frame: rect)
+    textField.placeholder = placeholder
+    textField.borderStyle = borderStyle
+    textField.keyboardType = keyboardType
+    textField.clearButtonMode = clearButtonMode
+    return textField
+}
