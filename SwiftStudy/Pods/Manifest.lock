@@ -1,12 +1,74 @@
 PODS:
-  - Alamofire (4.8.2)
-  - ESPullToRefresh (2.9)
+  - Alamofire (4.9.1)
+  - ESPullToRefresh (2.9.2)
   - FLAnimatedImage (1.0.12)
-  - HandyJSON (5.0.0)
+  - HandyJSON (5.0.1)
+  - Masonry (1.1.0)
   - MCToast (0.0.5)
-  - SDWebImage (5.1.0):
-    - SDWebImage/Core (= 5.1.0)
-  - SDWebImage/Core (5.1.0)
+  - Reachability (3.2)
+  - SDWebImage (5.7.3):
+    - SDWebImage/Core (= 5.7.3)
+  - SDWebImage/Core (5.7.3)
+  - SJBaseVideoPlayer (3.2.7):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/AVPlayer (= 3.2.7)
+    - SJBaseVideoPlayer/Common (= 3.2.7)
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/AVPlayer (3.2.7):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/Common
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/Common (3.2.7):
+    - Masonry
+    - Reachability
+    - SJBaseVideoPlayer/ResourceLoader
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJBaseVideoPlayer/ResourceLoader (3.2.7):
+    - Masonry
+    - Reachability
+    - SJUIKit/AttributesFactory (>= 0.0.0.38)
+    - SJUIKit/ObserverHelper
+    - SJUIKit/Queues
+    - SJUIKit/SQLite3
+  - SJUIKit/AttributesFactory (0.0.0.42):
+    - SJUIKit/AttributesFactory/Deprecated (= 0.0.0.42)
+    - SJUIKit/AttributesFactory/UIKitText (= 0.0.0.42)
+  - SJUIKit/AttributesFactory/Deprecated (0.0.0.42)
+  - SJUIKit/AttributesFactory/UIKitText (0.0.0.42)
+  - SJUIKit/ObserverHelper (0.0.0.42)
+  - SJUIKit/Queues (0.0.0.42)
+  - SJUIKit/SQLite3 (0.0.0.42):
+    - SJUIKit/SQLite3/Core (= 0.0.0.42)
+    - SJUIKit/SQLite3/Protocol (= 0.0.0.42)
+  - SJUIKit/SQLite3/Core (0.0.0.42):
+    - SJUIKit/SQLite3/Protocol
+  - SJUIKit/SQLite3/Protocol (0.0.0.42)
+  - SJVideoPlayer (3.2.4):
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJVideoPlayer/Common (= 3.2.4)
+    - SJVideoPlayer/ControlLayers (= 3.2.4)
+    - SJVideoPlayer/ResourceLoader (= 3.2.4)
+  - SJVideoPlayer/Common (3.2.4):
+    - Masonry
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJUIKit/AttributesFactory
+    - SJVideoPlayer/ResourceLoader
+  - SJVideoPlayer/ControlLayers (3.2.4):
+    - SJBaseVideoPlayer (>= 3.2.5)
+    - SJVideoPlayer/Common
+  - SJVideoPlayer/ResourceLoader (3.2.4):
+    - SJBaseVideoPlayer (>= 3.2.5)
   - SnapKit (4.2.0)
 
 DEPENDENCIES:
@@ -16,6 +78,8 @@ DEPENDENCIES:
   - HandyJSON
   - MCToast
   - SDWebImage
+  - SJBaseVideoPlayer
+  - SJVideoPlayer
   - SnapKit
 
 SPEC REPOS:
@@ -24,19 +88,29 @@ SPEC REPOS:
     - ESPullToRefresh
     - FLAnimatedImage
     - HandyJSON
+    - Masonry
     - MCToast
+    - Reachability
     - SDWebImage
+    - SJBaseVideoPlayer
+    - SJUIKit
+    - SJVideoPlayer
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  ESPullToRefresh: ce058a36454a5032519cc9d8b45da217728cf104
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  ESPullToRefresh: efed00d52597065e9a84e1e52fa444fdb1a1dee0
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
+  HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MCToast: ed682abca850199076fd05b4487595e27cfa1eb0
-  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
+  SJBaseVideoPlayer: f08787efb5154bf08f9439441b36bd86efcc4ec3
+  SJUIKit: 1356488a2488a9aafeddaf6a098006277c0eb9b8
+  SJVideoPlayer: acee9fab2b384fc87ed7636c05977d8dd3cdb4ee
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 4092eabbfc810ec71caad52596a471b22e7912b5
+PODFILE CHECKSUM: 80f355ee3fdecaa25ff70c99ce72feed55826e93
 
 COCOAPODS: 1.9.1

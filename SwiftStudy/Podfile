@@ -21,7 +21,9 @@ target 'SwiftStudy' do
   # APP启动引导页,支持播放gif/png/jpg等类型的资源数组
 #  pod 'GuidePageView'
 
-   
+  pod 'SJVideoPlayer'
+  
+  pod 'SJBaseVideoPlayer'
 
 
 end
