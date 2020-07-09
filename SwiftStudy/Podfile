@@ -19,11 +19,9 @@ target 'SwiftStudy' do
   pod 'MCToast'
   
   # APP启动引导页,支持播放gif/png/jpg等类型的资源数组
-#  pod 'GuidePageView'
+  pod 'GuidePageView'
 
-  pod 'SJVideoPlayer'
-  
-  pod 'SJBaseVideoPlayer'
-
+# RAC
+  pod 'ReactiveCocoa'
 
 end
