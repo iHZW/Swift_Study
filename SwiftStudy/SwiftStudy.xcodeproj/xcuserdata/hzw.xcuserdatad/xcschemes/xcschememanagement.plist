@@ -7,7 +7,25 @@
 		<key>SwiftStudy.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>13</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7C650CD2243CD62F00726BA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C650CE8243CD63200726BA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7C650CF3243CD63200726BA4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

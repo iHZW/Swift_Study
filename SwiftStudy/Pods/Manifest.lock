@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - ESPullToRefresh (2.9.2)
   - FLAnimatedImage (1.0.12)
+  - GuidePageView (1.1.0)
   - HandyJSON (5.0.1)
   - MCToast (0.0.5)
   - ReactiveCocoa (10.2.0):
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - Alamofire
   - ESPullToRefresh
   - FLAnimatedImage
+  - GuidePageView
   - HandyJSON
   - MCToast
   - ReactiveCocoa
@@ -27,6 +29,7 @@ SPEC REPOS:
     - Alamofire
     - ESPullToRefresh
     - FLAnimatedImage
+    - GuidePageView
     - HandyJSON
     - MCToast
     - ReactiveCocoa
@@ -38,6 +41,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   ESPullToRefresh: efed00d52597065e9a84e1e52fa444fdb1a1dee0
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  GuidePageView: 1a11941151c17df87f59e3a6e0902982d12f0b7a
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   MCToast: ed682abca850199076fd05b4487595e27cfa1eb0
   ReactiveCocoa: a123c42f449c552460a4ee217dd49c76a17c8204
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
-PODFILE CHECKSUM: 9251a6c9778d354e13819eab2b5a26a4d66ccf7d
+PODFILE CHECKSUM: 2e032b671d8d3bdedc57552e31321c4fa6b83c2e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
