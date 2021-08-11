@@ -12,6 +12,7 @@ PODS:
     - SDWebImage/Core (= 5.7.3)
   - SDWebImage/Core (5.7.3)
   - SnapKit (4.2.0)
+  - SwiftTheme (0.5.2)
 
 DEPENDENCIES:
   - Alamofire
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - ReactiveCocoa
   - SDWebImage
   - SnapKit
+  - SwiftTheme
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - ReactiveSwift
     - SDWebImage
     - SnapKit
+    - SwiftTheme
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -48,7 +51,8 @@ SPEC CHECKSUMS:
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
   SDWebImage: 97351f6582ceca541ea294ba66a1fcb342a331c2
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftTheme: 8b02c479bb4441b2b6790ac126e961b1b6fb0932
 
-PODFILE CHECKSUM: 2e032b671d8d3bdedc57552e31321c4fa6b83c2e
+PODFILE CHECKSUM: 83b925d0318af8940c25d1450d6bf61abf011475
 
 COCOAPODS: 1.9.3

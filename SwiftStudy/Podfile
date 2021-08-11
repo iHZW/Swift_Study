@@ -23,5 +23,8 @@ target 'SwiftStudy' do
 
 # RAC
   pod 'ReactiveCocoa'
+#  换肤
+  pod 'SwiftTheme'
+
 
 end

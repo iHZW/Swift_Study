@@ -8,6 +8,21 @@
 
 import UIKit
 
+/** 会飞 */
+protocol playable {
+    func tabeOff(speed: Int)
+}
+
+/** 攻击 */
+protocol armed {
+    func attack(auto: Bool)
+}
+
+protocol survival {
+    func eat(something: String)
+    func drink(something: String)
+}
+
 class WFListInfoModel: NSObject {
     var titleName : String
     var subTitleName : String
@@ -21,5 +36,28 @@ class WFListInfoModel: NSObject {
         self.leftImageName = leftImageName
         self.rightBtnName = rightBtnName
     }
+}
 
+
+extension WFListInfoModel:playable, armed, survival {
+    
+    func tabeOff(speed: Int) {
+        print("\(speed)")
+    }
+    
+    func attack(auto: Bool) {
+        if auto {
+            print("开启自动攻击")
+        }else {
+            print("开启手动攻击")
+        }
+    }
+    
+    func eat(something: String) {
+        print("吃: \(something)")
+    }
+    
+    func drink(something: String) {
+        print("th喝: \(something)")
+    }
 }

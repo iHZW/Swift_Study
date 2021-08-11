@@ -77,7 +77,88 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     //抽屉
     @objc func refreshHome() {
 //        self.testRequest()
+        let ctrl = ResearchViewController.init()
+        self.navigationController?.pushViewController(ctrl, animated: true)
+        
         MCToast.mc_failure("-09-09-00--09-0")
+        
+        let age = 1
+        assert(age >= 0, "A person's age cannot be less than zero")
+        
+        //空合运算符
+        /** 使用前提,使用对象必须是可选类型 */
+        let defaultString = "defaultName"
+        var userName : String?
+        userName = "Han Zhiwei"
+        let resultName = userName ?? defaultString
+        WFLog("resultName = \(resultName)")
+        
+        let name = ["0", "1", "2", "3", "4"]
+        
+        for index in 0..<name.count {
+            WFLog("index = \(index)")
+        }
+        
+        for _ in name[2...] {
+            
+        }
+        
+        for _ in name[...3] {
+            
+        }
+        
+        for _ in name[..<3] {
+            
+        }
+        
+        let linesWithIndentation = """
+            This line doesn't begin whith whitespace.
+            This line begins with four spaces.
+            This line doesn't begin whit whitespace.
+            """
+        WFLog("linesWithIndentation = \(linesWithIndentation)")
+        
+        var word = "cafe"
+        word += "\u{301}"
+        WFLog("the number of characters in \(word) is \(word.count)")
+        
+        for index in word.indices {
+//            print("\(word[index])", terminator: "/")
+            print("\(word[index])", terminator: "+")
+        }
+        
+        var gameStatus = true
+        var gameCount = 0
+        gameLoop: while gameStatus {
+            gameCount += 1;
+            if gameCount == 20 {
+                gameStatus = false
+                break gameLoop
+            }
+        }
+//        let tempArray = ["0", "2"]
+        var nameDic = ["one": "hzw"]
+        if nameDic["one"] == "hzw" {
+            nameDic = ["one":""]
+            greet(person: nameDic)
+        }
+        
+        if #available(iOS 10.0, macOS 10.12, *) {
+            /** 在iOS 上使用iOS10.0及以上版本 的API  在mac上使用 macOS10.12的API */
+        }else{
+            /** 使用之前版本的API */
+        }
+        
+        
+        
+    }
+    
+    
+    func greet(person: [String: String]) {
+        guard let name =  person["one"] else {
+            return
+        }
+        print("\(name)")
     }
     
     //加载下一页数据
@@ -245,7 +326,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
                     self.request_nt = result.nt!
                 }else{
                 }
-                WFLog("\(datas)\n\(self.request_nt)")
+//                WFLog("\(datas)\n\(self.request_nt)")
                 //更新UI
                 self.mainCollectionView.reloadData()
             }else{

@@ -57,6 +57,13 @@ class ThirdViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         WFLog("点击了第\(indexPath.row)名")
+        
+        let sectionArray = self.dataArray.object(at: indexPath.section) as! NSMutableArray
+        let infoModel = sectionArray.object(at: indexPath.row) as! WFListInfoModel
+        infoModel.attack(auto: true)
+        infoModel.tabeOff(speed: 3000)
+        infoModel.eat(something: "bread")
+        infoModel.drink(something: "milk")
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
