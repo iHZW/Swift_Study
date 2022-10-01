@@ -29,5 +29,11 @@ class BaseViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //析构方法
+    deinit {
+        let vc = NSStringFromClass(self.classForCoder)
+        print("\(vc) -- 销毁了")
+    }
 
 }

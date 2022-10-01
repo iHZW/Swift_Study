@@ -9,8 +9,7 @@
 import UIKit
 import Alamofire
 import ESPullToRefresh
-import MCToast
-
+import Toast_Swift
 
 private let kMyCollectionViewCellKey = "kMyCollectionViewCellKey"
 private let kRequestUrl = "https://m.stock.pingan.com/news/api/v2/news/channel/list?channelEnName=secchat,recommend&ps=20&cltplt=iph&cltver=7.3.0.0"
@@ -24,6 +23,7 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
     var request_nt: String = ""
     var headerAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
     var footAnimator: (ESRefreshProtocol & ESRefreshAnimatorProtocol)!
+    var sortArr:Array<Any> = [1,2,3,6,4,7,3,8,9]
 
     var refreshAnimatorType: ESRefreshAnimatorType? {
         didSet{
@@ -74,14 +74,106 @@ class ViewController: BaseViewController, UICollectionViewDelegate, UICollection
         self.navigationItem.leftBarButtonItem = leftItem
     }
     
+    func mySortRunc(array:inout Array<Any>, sortClosure:(Int, Int, Array<Any>) -> Bool) -> Array<Any> {
+        WFLog("------\(array)000000000")
+        for x in 0..<array.count - 1 {
+            var flag = true
+            for y in 0..<(array.count - x - 1) {
+                if sortClosure(y, y + 1, array) {
+                    array.swapAt(y, y + 1)
+                    flag = false
+                }
+            }
+            if flag {
+                break
+            }
+        }
+        return array
+    }
+    
+    func sortNewFunc(array:Array<Any>) -> Array<Any> {
+        var list = array
+        // 循环次数
+        var count = 1
+        
+        /*
+         普通方案
+         */
+//        for i in 0..<list.count-1 {
+//            count = i
+//            for j in 0..<list.count - 1 - i {
+//                //交换
+//                if (list[j] as! Int ) > (list[j+1] as! Int) {
+//                    list.swapAt(j, j+1)
+//                }
+//            }
+//        }
+        
+        /*
+         改进方法
+         */
+//        for i in 0..<list.count-1 {
+//            var flag = true
+//            count = i
+//            for j in 0..<list.count - 1 - i {
+//                if (list[j] as! Int ) > (list[j+1] as! Int) {
+//                    list.swapAt(j, j+1)
+//                    flag = false
+//                }
+//            }
+//            if flag {
+//                break
+//            }
+//        }
+        
+        /*
+         优化
+         */
+        var swap = 0
+        var k = list.count - 1
+        for i in 0..<list.count {
+            // 默认交换索引为0, 防止数组完全有序时,让然继续多次循环
+            var flag = true
+            count = i
+            for j in 0..<k {
+                if (list[j] as! Int ) < (list[j+1] as! Int) {
+                    list.swapAt(j, j+1)
+                    flag = false
+                    swap = j
+                }
+            }
+            k = swap
+            if flag {
+                break
+            }
+        }
+
+        print("循环次数为:\(count) \narray:\(list)")
+        return list
+    }
+    
     //抽屉
     @objc func refreshHome() {
+        var array:Array<Any> = [1,2,3,6,4,7,3,8,9]
+//        let array_new = sortNewFunc(array: array)
+        
+        let tempArr = mySortRunc(array: &array, sortClosure: {(x:Int, y:Int, arr:Array<Any>) ->Bool in
+            let value1 = arr[x] as! Int
+            let value2 = arr[y] as! Int
+            return value1 < value2
+        })
+        
+        sortArr = sortNewFunc(array: sortArr)
+        WFLog("\(sortArr)")
+        
+        self.view.makeToast("-09-09-00--09-0", position: .center)
+        
+        return
+        
 //        self.testRequest()
         let ctrl = ResearchViewController.init()
         self.navigationController?.pushViewController(ctrl, animated: true)
-        
-        MCToast.mc_failure("-09-09-00--09-0")
-        
+                
         let age = 1
         assert(age >= 0, "A person's age cannot be less than zero")
         

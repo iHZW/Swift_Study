@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 private let kAdjustSpace = 5
 
@@ -28,7 +29,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     public var imageName: String? {
         didSet{
             let imageUrl: String = "http://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p53688.jpg"
-            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: self.imageName!), options: SDWebImageOptions.continueInBackground, completed: nil)
+            self.imageView?.kf.setImage(with: URL(string: imageUrl))
+            
+//            self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: self.imageName!), options: SDWebImageOptions.continueInBackground, completed: nil)
         }
     }
     
@@ -69,7 +72,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.commentString = infoModel.hotIndex
         self.timeString = infoModel.publishTime
         let imageUrl: String = infoModel.imgUrl!
-        self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
+//        self.imageView?.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: UIImage.init(named: "default_image"), options: SDWebImageOptions.continueInBackground, completed: nil)
+        self.imageView?.kf.setImage(with: URL(string: imageUrl),
+                                    placeholder: UIImage.init(named: "default_image"),
+                                    options: [.cacheOriginalImage])
     }
   
     override init(frame: CGRect) {

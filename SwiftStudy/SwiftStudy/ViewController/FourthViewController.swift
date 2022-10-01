@@ -12,7 +12,7 @@ class FourthViewController: BaseViewController {
 
     private var myStudent: Student?
     
-    private var titleArray: [String] = ["普吉岛","夏威夷","洛杉矶","杭州","长城", "英格兰","长城"]
+    private var titleArray: [String] = ["普吉岛werqwerqwerqwerqwerewr","夏威夷","洛杉矶","杭州","长城", "英格兰","长城"]
     
 //    private var testCtrl = TestWFTableViewController()
     

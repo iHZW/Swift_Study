@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSContactsUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to the Contacts to let you find your friends.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to the Photo Library to let you add photos from your Photo Library.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) lets you keep track of interesting places. It needs access to the GPS coordinates for your location.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) lets you make beautiful photos of your property or market items. It needs access to the Camera.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

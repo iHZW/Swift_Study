@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import MCToast
+import Toast_Swift
 
 class ViewDetailPage: BaseViewController {
 
@@ -165,7 +165,7 @@ class ViewDetailPage: BaseViewController {
         self.tempPrint.pop()
         WFLog("getCurrent = \(self.tempPrint.getCurrent() ?? "default")")
         
-        MCToast.mc_failure("请输入账号")
+        self.view.makeToast("请输入账号")
         
     }
     

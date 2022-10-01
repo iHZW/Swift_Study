@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-import MCToast
+import Toast_Swift
 
 private let kLogLeftSpace = 40
 private let kLeftViewWidth = 40
@@ -19,8 +19,8 @@ private let cellID: String = "logincellid"
 
 class LoginViewController: BaseViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    let countNo: String = "18516638588"
-    let password: String = "000000"
+    let countNo: String = "100"
+    let password: String = "100"
     var loginBtn: UIButton!
     var closeBtn: UIButton!
     var tableView: WFBaseTableView!
@@ -208,20 +208,19 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, UITableViewD
 
         
         if self.countTextField.text?.validString() == true {
-            MCToast.mc_failure("请输入账号")
+            self.view.makeToast("请输入账号")
         }else if self.pwdTextField.text?.validString() == true {
-            MCToast.mc_other("请输入密码")
+            self.view.makeToast("请输入密码")
         }else{
             if (self.countTextField.text == self.countNo &&
                 self.pwdTextField.text == self.password) {
-                
-                MCToast.mc_loading()
+//                MCToast.mc_loading()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    MCToast.mc_success("登录成功")
+                    self.view.makeToast("登录成功")
                     self.closePage()
                 }
             }else{
-                MCToast.mc_text("密码不正确")
+                self.view.makeToast("账号/密码不正确")
             }
         }
     }

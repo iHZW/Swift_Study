@@ -8,6 +8,10 @@
 
 import UIKit
 
+#if DEBUG
+    import DoraemonKit
+#endif
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -19,6 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         window?.rootViewController = MainTabBarController()
+        
+        #if DEBUG
+            DoraemonManager.shareInstance().install()
+        #endif
     }
 
     @available(iOS 13.0, *)

@@ -1,6 +1,13 @@
-platform :ios, '8.0'
+platform :ios, '12.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
+
+####  Debug调试相关 ####
+def debugTool
+  
+  pod 'DoraemonKit/Core' , '3.1.3', :configurations => ['Debug']
+
+end
 
 target 'SwiftStudy' do
 
@@ -11,12 +18,10 @@ target 'SwiftStudy' do
   #JSON转Model(HandyJSON另辟蹊径，采用Swift反射+内存赋值的方式来构造Model实例，保持原汁原味的Swift类定义)
   pod 'HandyJSON'
   #网络请求框架
-  pod 'Alamofire'
+  pod 'Alamofire', '4.9.1'
   pod 'FLAnimatedImage'
-  pod 'SDWebImage'
-  pod 'ESPullToRefresh'
-  # 添加Toast
-  pod 'MCToast'
+#  pod 'SDWebImage'
+  pod 'ESPullToRefresh', '2.9.2'
   
   # APP启动引导页,支持播放gif/png/jpg等类型的资源数组
   pod 'GuidePageView'
@@ -25,6 +30,18 @@ target 'SwiftStudy' do
   pod 'ReactiveCocoa'
 #  换肤
   pod 'SwiftTheme'
-
+  
+  # Debug调试工具
+  debugTool
+  
+  # 图片加载库 SDWebView 的 Swift版本
+  pod 'Kingfisher', '7.3.2'
+  # SegmentedControl控制器
+  pod 'BetterSegmentedControl', '2.0.0'
+  # 添加Toast
+  pod 'Toast-Swift', '5.0.1'
+  # AlertView
+  pod 'SCLAlertView', '0.8'
 
 end
+

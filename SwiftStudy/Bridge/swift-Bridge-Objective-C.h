@@ -9,7 +9,7 @@
 #ifndef swift_Bridge_Objective_C_h
 #define swift_Bridge_Objective_C_h
 
-#import "UIImageView+WebCache.h"
+//#import "UIImageView+WebCache.h"
 
 
 #endif /* swift_Bridge_Objective_C_h */

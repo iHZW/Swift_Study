@@ -56,10 +56,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let controllerArray: [UIViewController] = [ViewController(), SecondViewController(), ThirdViewController(), FourthViewController(), FifthViewController()]
-        let normalImageArray: [String] = ["TabMenu_Home_Normal", "TabMenu_Finacing_Normal", "TabMenu_MyStock_Normal", "TabMenu_Trade_Normal", "TabMenu_Home_Normal"]
-        let selectImageArray: [String] = ["TabMenu_Home_Highlight", "TabMenu_Finacing_Highlight", "TabMenu_MyStock_Highlight", "TabMenu_Trade_Highlight", "TabMenu_Mine_Highlight"]
-        let titleArray: [String] = ["首页", "第二页", "第三页", "第四页", "我的"]
+        let controllerArray: [UIViewController] = [ViewController(), SecondViewController(), ThirdViewController(), FourthViewController(), FifthViewController(),ViewController(), SecondViewController(), ThirdViewController(), FourthViewController(), FifthViewController()]
+        let normalImageArray: [String] = ["TabMenu_Home_Normal", "TabMenu_Finacing_Normal", "TabMenu_MyStock_Normal", "TabMenu_Trade_Normal", "TabMenu_Home_Normal","TabMenu_Home_Normal", "TabMenu_Finacing_Normal", "TabMenu_MyStock_Normal", "TabMenu_Trade_Normal", "TabMenu_Home_Normal"]
+        let selectImageArray: [String] = ["TabMenu_Home_Highlight", "TabMenu_Finacing_Highlight", "TabMenu_MyStock_Highlight", "TabMenu_Trade_Highlight", "TabMenu_Mine_Highlight","TabMenu_Home_Highlight", "TabMenu_Finacing_Highlight", "TabMenu_MyStock_Highlight", "TabMenu_Trade_Highlight", "TabMenu_Mine_Highlight"]
+        let titleArray: [String] = ["首页", "第二页", "第三页", "第四页", "我的","首页", "第二页", "第三页", "第四页", "我的"]
 
         var currentIndex: Int = 0
         for _ in controllerArray {
