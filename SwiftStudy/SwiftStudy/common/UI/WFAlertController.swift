@@ -157,9 +157,9 @@ class WFAlertController: NSObject{
             if let keywindow = UIApplication.shared.keyWindow{
                 popPresenter?.sourceView = keywindow
                 if alertVC.preferredStyle == UIAlertController.Style.alert {
-                    popPresenter?.sourceRect = CGRect(x: keywindow.width/2, y:keywindow.height/2, width: 0, height: 0)
+                    popPresenter?.sourceRect = CGRect(x: keywindow.jk.width/2, y:keywindow.jk.height/2, width: 0, height: 0)
                 }else {
-                    popPresenter?.sourceRect = CGRect(x: keywindow.width/2, y: keywindow.height, width: 0, height: 0)
+                    popPresenter?.sourceRect = CGRect(x: keywindow.jk.width/2, y: keywindow.jk.height, width: 0, height: 0)
                 }
                 popPresenter?.permittedArrowDirections = []
             }

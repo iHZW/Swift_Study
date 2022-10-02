@@ -22,17 +22,19 @@ public let kSysStatuesBarHeight = min(UIApplication.shared.statusBarFrame.size.h
 //状态栏+导航栏高度
 public let kSafeAreaTopStatusNavBarHeight = (kMainNavHeight + kSysStatuesBarHeight)
 
+//状态栏+导航栏高度
+public let kSafeAreaBottomStatusTabBarHeight = (kMainTabBarHeight + kPORTRAIT_SAFE_AREA_BOTTOM_SPACE)
 
 // IPhoneX 竖屏安全区域顶部空白
-public let kPORTRAIT_SAFE_AREA_TOP_SPACE = (IS_IPHONE_X() ? CGFloat(44) : 0)
+public let kPORTRAIT_SAFE_AREA_TOP_SPACE = (IS_IPHONEX_SET() ? CGFloat(44) : 0)
 // IPhoneX 竖屏安全区域底部空白
-public let kPORTRAIT_SAFE_AREA_BOTTOM_SPACE = (IS_IPHONE_X() ? CGFloat(34) : 0)
+public let kPORTRAIT_SAFE_AREA_BOTTOM_SPACE = (IS_IPHONEX_SET() ? CGFloat(34) : 0)
 // IPhoneX 横屏安全区域左部空白
-public let kLANDSCAPE_SAFE_AREA_LEFT_SPACE = (IS_IPHONE_X() ? CGFloat(44) : 0)
+public let kLANDSCAPE_SAFE_AREA_LEFT_SPACE = (IS_IPHONEX_SET() ? CGFloat(44) : 0)
 // IPhoneX 横屏安全区域右部空白
-public let kLANDSCAPE_SAFE_AREA_RIGHT_SPACE = (IS_IPHONE_X() ? CGFloat(44) : 0)
+public let kLANDSCAPE_SAFE_AREA_RIGHT_SPACE = (IS_IPHONEX_SET() ? CGFloat(44) : 0)
 // IPhoneX 横屏安全区域底部空白
-public let kLANDSCAPE_SAFE_AREA_BOTTOM_SPACE = (IS_IPHONE_X() ? CGFloat(21) : 0)
+public let kLANDSCAPE_SAFE_AREA_BOTTOM_SPACE = (IS_IPHONEX_SET() ? CGFloat(21) : 0)
 
 //返回UIFont
 func PASFont(fontSize: CGFloat) -> UIFont {
@@ -42,12 +44,19 @@ func PASFont(fontSize: CGFloat) -> UIFont {
 
 
 //判断是否是iphoneX系列的手机
-func IS_IPHONE_X() ->Bool {
-    let screenHeight = UIScreen.main.nativeBounds.size.height;
-    if screenHeight == 2436 || screenHeight == 1792 || screenHeight == 2688 || screenHeight == 1624 {
-        return true
-    }
-    return false
+//func IS_IPHONE_X() ->Bool {
+//    let screenHeight = max(UIScreen.main.nativeBounds.size.height, UIScreen.main.nativeBounds.size.width);
+//    if screenHeight == 2436
+//        || screenHeight == 1792
+//        || screenHeight == 2688
+//        || screenHeight == 1624 {
+//        return true
+//    }
+//    return false
+//}
+
+func IS_IPHONEX_SET() -> Bool {
+    return UIDevice.jk.isIphoneXScreen()
 }
 
 

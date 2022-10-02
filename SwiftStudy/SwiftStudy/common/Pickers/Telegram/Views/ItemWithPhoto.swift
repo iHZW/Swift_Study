@@ -80,7 +80,7 @@ final class ItemWithPhoto: UICollectionViewCell {
     }
     
     func updateAppearance(forPoint view: UIView) {
-        view.frame.size = CGSize(width: unselectedCircle.width - unselectedCircle.borderWidth * 2, height: unselectedCircle.height - unselectedCircle.borderWidth * 2)
+        view.frame.size = CGSize(width: unselectedCircle.jk.width - unselectedCircle.borderWidth * 2, height: unselectedCircle.jk.height - unselectedCircle.borderWidth * 2)
         view.center = selectedCircle.center
         view.circleCorner = true
     }

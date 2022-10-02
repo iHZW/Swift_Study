@@ -32,9 +32,38 @@ class FifthViewController: BaseViewController, WKUIDelegate, WKScriptMessageHand
         //初始化
         let config = WKWebViewConfiguration.init()
         config.userContentController = userContent
-        self.wkWebview = WKWebView.init(frame:self.view.frame, configuration: config);
+        
+        let topSpace = kSafeAreaTopStatusNavBarHeight
+        let bottomSpace = kSafeAreaBottomStatusTabBarHeight
+        let mainHeight = kMainSCreenHeight
+        let viewHeight = CGRectGetHeight(self.view.frame)
+        
+        let rect = CGRect(x: 0, y: kSafeAreaTopStatusNavBarHeight, width: kMainScreenWidth, height: kMainSCreenHeight - kSafeAreaBottomStatusTabBarHeight)
+        self.wkWebview = WKWebView.init(frame:rect, configuration: config);
         self.view.addSubview(self.wkWebview!)
         
+        //添加工具条
+        let toolView = UIView(frame: CGRect(x: 15, y: kMainSCreenHeight - kSafeAreaBottomStatusTabBarHeight - 40, width: kMainScreenWidth - 30, height: 40))
+            .backgroundColor(.cyan)
+        self.view.addSubview(toolView)
+        
+        let leftBtn = UIButton(type: .custom)
+            .frame(CGRect(x: 15, y: 0, width: 100, height: 40))
+            .title("后退")
+            .textColor(.white)
+            .backgroundColor(.systemPink)
+            .add(self, action: #selector(leftAction))
+                
+        let rightBtn = UIButton(type: .custom)
+            .frame(CGRect(x: CGRectGetMaxX(leftBtn.frame) + 20, y: 0, width: 100, height: 40))
+            .title("前进")
+            .textColor(.white)
+            .backgroundColor(.gray)
+            .add(self, action: #selector(rightAction))
+
+
+        toolView.addSubview(leftBtn)
+        toolView.addSubview(rightBtn)
         //不要忘记实现代理
        self.wkWebview?.navigationDelegate = self;
        self.wkWebview?.uiDelegate = self;
@@ -45,6 +74,22 @@ class FifthViewController: BaseViewController, WKUIDelegate, WKScriptMessageHand
 //        if self.wkWebview != nil {
 //             self.wkWebview?.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil);
 //        }
+    }
+    
+    @objc func leftAction() {
+        if ((self.wkWebview?.canGoBack) != nil) {
+            self.wkWebview?.goBack()
+        }
+    }
+    
+    @objc func rightAction() {
+        if ((self.wkWebview?.canGoForward) != nil) {
+            self.wkWebview?.goForward()
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("canGoBack = \(webView.canGoBack) canGoForward = \(webView.canGoForward)")
     }
     
     

@@ -23,6 +23,7 @@ protocol InteractionViewControllerProtocol {
 
 class InteractionViewController: BaseViewController {
     
+    // MARK: -设置属性
     var label:UILabel = UILabel()
     var data:String?
     //代理反向传值
@@ -31,6 +32,15 @@ class InteractionViewController: BaseViewController {
     var closure:((String)->Void)?
     typealias MyBlock = (_ data:String) -> Void
     var closureBlock: MyBlock?
+    
+    lazy var wfAlert:UIAlertAction = {
+        let alertAction = UIAlertAction(title: "按钮一", style: .default) { (action) in
+            print("点击了alertAction")
+        }
+        return alertAction
+    }()
+    
+    
     //加载试图时调用的方法
     override func loadView() {
         super.loadView()
@@ -107,12 +117,33 @@ class InteractionViewController: BaseViewController {
         let barItem = UIBarButtonItem(image: UIImage(named: "AppIcon"), style: .plain, target: self, action: #selector(leftActoin))
         let tempItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(leftActoin))
         let tempItem1 = UIBarButtonItem(title: "返回", style: .plain, target: self, action: #selector(leftActoin))
-        
         self.navigationItem.leftBarButtonItem = barItem
     }
     
     @objc func leftActoin() {
         print("leftActoin")
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        showAlertAction()
+    }
+    
+    // MARK: -UIalertAction
+    func showAlertAction () {
+        
+        let alertCtrl = UIAlertController(title: "提示", message: "确定删除吗?", preferredStyle: .actionSheet)
+        let alertAction1 = UIAlertAction(title: "取消", style: .cancel) { (action) in
+            print("--取消--\(action)")
+        }
+        let alertAction2 = UIAlertAction(title: "确定", style: .destructive) { (action) in
+            print("-确定---\(action)")
+        }
+        alertCtrl.addAction(alertAction1)
+        alertCtrl.addAction(alertAction2)
+        alertCtrl.addAction(wfAlert)
+        
+        self.present(alertCtrl, animated: true)
     }
 }

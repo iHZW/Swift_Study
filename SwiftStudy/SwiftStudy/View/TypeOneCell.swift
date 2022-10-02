@@ -52,9 +52,9 @@ class TypeOneCell: UICollectionViewCell {
     func layout() {
         let vTextInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 4 : 2
         let hTextInset: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8
-        let imageViewHeight: CGFloat = contentView.height - (layoutMargins.top + layoutMargins.bottom)
+        let imageViewHeight: CGFloat = contentView.jk.height - (layoutMargins.top + layoutMargins.bottom)
         imageView.frame = CGRect(x: layoutMargins.left + 4, y: layoutMargins.top, width: imageViewHeight, height: imageViewHeight)
-        let textViewWidth: CGFloat = contentView.width - imageView.frame.maxX - 2 * hTextInset
+        let textViewWidth: CGFloat = contentView.jk.width - imageView.frame.maxX - 2 * hTextInset
         let titleSize = title.sizeThatFits(CGSize(width: textViewWidth, height: contentView.height))
         let subtitleSize = subtitle.sizeThatFits(CGSize(width: textViewWidth, height: contentView.height))
         title.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: textViewWidth, height: titleSize.height))

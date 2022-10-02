@@ -12,6 +12,9 @@ end
 target 'SwiftStudy' do
 
   use_frameworks!
+  
+  #加载扩展库
+  pod 'JKSwiftExtension', :path => 'JKSwiftExtension/'
 
   #约束框架(和OC 的 Masonry相似)
   pod 'SnapKit'

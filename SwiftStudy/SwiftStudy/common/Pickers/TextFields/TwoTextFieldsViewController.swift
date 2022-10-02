@@ -37,8 +37,8 @@ final class TwoTextFieldsViewController: UIViewController {
         textFieldView.addSubview(textFieldOne)
         textFieldView.addSubview(textFieldTwo)
         
-        textFieldView.width = view.width
-        textFieldView.height = height * 2
+        textFieldView.jk.width = view.jk.width
+        textFieldView.jk.height = height * 2
         textFieldView.maskToBounds = true
         textFieldView.borderWidth = 1
         textFieldView.borderColor = UIColor.lightGray
@@ -66,20 +66,20 @@ final class TwoTextFieldsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        textFieldView.width = view.width - hInset * 2
-        textFieldView.height = height * 2
+        textFieldView.jk.width = view.jk.width - hInset * 2
+        textFieldView.jk.height = height * 2
         textFieldView.center.x = view.center.x
         textFieldView.center.y = view.center.y
         
-        textFieldOne.width = textFieldView.width
-        textFieldOne.height = textFieldView.height / 2
-        textFieldOne.center.x = textFieldView.width / 2
-        textFieldOne.center.y = textFieldView.height / 4
+        textFieldOne.jk.width = textFieldView.jk.width
+        textFieldOne.jk.height = textFieldView.jk.height / 2
+        textFieldOne.jk.center.x = textFieldView.jk.width / 2
+        textFieldOne.jk.center.y = textFieldView.jk.height / 4
         
-        textFieldTwo.width = textFieldView.width
-        textFieldTwo.height = textFieldView.height / 2
-        textFieldTwo.center.x = textFieldView.width / 2
-        textFieldTwo.center.y = textFieldView.height - textFieldView.height / 4
+        textFieldTwo.jk.width = textFieldView.jk.width
+        textFieldTwo.jk.height = textFieldView.jk.height / 2
+        textFieldTwo.jk.center.x = textFieldView.jk.width / 2
+        textFieldTwo.jk.center.y = textFieldView.jk.height - textFieldView.jk.height / 4
     }
 }
 

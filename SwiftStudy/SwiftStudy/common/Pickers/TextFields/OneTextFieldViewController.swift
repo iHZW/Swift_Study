@@ -34,8 +34,8 @@ final class OneTextFieldViewController: UIViewController {
         ui.vInset = vInset
         
         /// have to set textField frame width and height to apply cornerRadius
-        textField.height = ui.height
-        textField.width = view.width
+        textField.jk.height = ui.height
+        textField.jk.width = view.jk.width
         
         configuration?(textField)
         
@@ -58,8 +58,8 @@ final class OneTextFieldViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        textField.width = view.width - ui.hInset * 2
-        textField.height = ui.height
+        textField.jk.width = view.jk.width - ui.hInset * 2
+        textField.jk.height = ui.height
         textField.center.x = view.center.x
         textField.center.y = view.center.y - ui.vInset / 2
     }

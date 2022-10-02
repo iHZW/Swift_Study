@@ -92,11 +92,10 @@ class SimpleCell: UITableViewCell {
         self.contentView.addSubview(self.titleLabel)
         
         //划线
-//        self.titleLabel.addBorderTop(borderWidth: 2, borderColor: .red)
-        self.titleLabel.addBorderLeft(borderWidth: 2, borderColor: .red)
-//        self.titleLabel.addBorderBottom(borderWidth: 2, borderColor: .red)
-        self.titleLabel.addBorderRight(borderWidth: 2, borderColor: .red)
-        
+//        self.titleLabel.jk.addBorderTop(borderWidth: 2, borderColor: .red)
+        self.titleLabel.jk.addBorderLeft(borderWidth: 2, borderColor: .red)
+//        self.titleLabel.jk.addBorderBottom(borderWidth: 2, borderColor: .red)
+        self.titleLabel.jk.addBorderRight(borderWidth: 2, borderColor: .red)
         
 //        self.titleLabel.drawCircle(fillColor: .clear, strokeColor: .red, strokeWidth: 2.0)
         

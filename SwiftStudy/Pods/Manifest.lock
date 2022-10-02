@@ -20,6 +20,7 @@ PODS:
     - GCDWebServer/Core
   - GuidePageView (1.1.0)
   - HandyJSON (5.0.1)
+  - JKSwiftExtension (2.2.1)
   - Kingfisher (7.3.2)
   - ReactiveCocoa (10.2.0):
     - ReactiveSwift (~> 6.2)
@@ -37,9 +38,10 @@ DEPENDENCIES:
   - FLAnimatedImage
   - GuidePageView
   - HandyJSON
+  - JKSwiftExtension (from `JKSwiftExtension/`)
   - Kingfisher (= 7.3.2)
   - ReactiveCocoa
-  - SCLAlertView
+  - SCLAlertView (= 0.8)
   - SnapKit
   - SwiftTheme
   - Toast-Swift (= 5.0.1)
@@ -63,6 +65,10 @@ SPEC REPOS:
     - SwiftTheme
     - Toast-Swift
 
+EXTERNAL SOURCES:
+  JKSwiftExtension:
+    :path: JKSwiftExtension/
+
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BetterSegmentedControl: 91436ca4164f906d26b350220763ff2ef5445fb9
@@ -73,6 +79,7 @@ SPEC CHECKSUMS:
   GCDWebServer: 2c156a56c8226e2d5c0c3f208a3621ccffbe3ce4
   GuidePageView: 1a11941151c17df87f59e3a6e0902982d12f0b7a
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
+  JKSwiftExtension: f16a49da77754c72f718d3c505962a60f7aaceb0
   Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   ReactiveCocoa: a123c42f449c552460a4ee217dd49c76a17c8204
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
@@ -81,6 +88,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 8b02c479bb4441b2b6790ac126e961b1b6fb0932
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: c7cb12e0d8e394223eeea9de4953fa674f3fcdd8
+PODFILE CHECKSUM: e6c4c0bdd09da6abf357862eaa3992fd70ac69b2
 
 COCOAPODS: 1.11.3
