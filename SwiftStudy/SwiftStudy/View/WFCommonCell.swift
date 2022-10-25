@@ -153,9 +153,19 @@ class WFCommonCell: UITableViewCell {
         return "\(name)_0"
     }
 
+    func testAsync() {
+        // 并发队列
+        let concurrentQueue = DispatchQueue(label: "1", attributes: .concurrent);
+        // 串行队列
+        let serialQueue = DispatchQueue(label: "1");
+        serialQueue.async {
+            print("----1---")
+        }
+        print("---2----");
+    }
     
     @objc func rightBtnAction(rightBtn: UIButton) {
-    
+        testAsync();
         let name = rightBtn.titleLabel?.text
         self.studname(name!)
         
